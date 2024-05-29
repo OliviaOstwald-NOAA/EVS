@@ -1,5 +1,5 @@
 #PBS -S /bin/bash
-#PBS -N jevs_hurricane_regional_tropcyc_stats
+#PBS -N jevs_hurricane_regional_late_tropcyc_stats
 #PBS -j oe
 #PBS -A ENSTRACK-DEV
 #PBS -q dev
@@ -21,7 +21,7 @@ evs_ver_2d=$(echo $evs_ver | cut -d'.' -f1-2)
 
 export NET=evs
 export COMPONENT=hurricane
-export RUN=regional
+export RUN=regional_late
 export STEP=stats
 export VERIF_CASE=tropcyc
 export envir=dev

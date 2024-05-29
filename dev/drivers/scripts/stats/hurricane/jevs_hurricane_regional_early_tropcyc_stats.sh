@@ -1,5 +1,5 @@
 #PBS -S /bin/bash
-#PBS -N jevs_hurricane_regional_early_tropcyc_legacy_stats
+#PBS -N jevs_hurricane_regional_early_tropcyc_stats
 #PBS -j oe
 #PBS -A ENSTRACK-DEV
 #PBS -q dev
@@ -23,7 +23,7 @@ export NET=evs
 export COMPONENT=hurricane
 export RUN=regional_early
 export STEP=stats
-export VERIF_CASE=tropcyc_legacy
+export VERIF_CASE=tropcyc
 export envir=dev
 export cyc=00
 export job=jevs_${COMPONENT}_${RUN}_${VERIF_CASE}_${STEP}_${cyc}
@@ -35,14 +35,14 @@ export jobid=$job.${PBS_JOBID:-$$}
 module reset
 source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh 
 
-export PDY=20231231 
+export PDY=20241231 
 #Set PDY to override setpdy.sh called in the j-jobs
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/syndat_tcvitals.2023
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/regional.tracks.atcfunix.23
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/regional.tracks.atcfunix.24
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
