@@ -1,11 +1,11 @@
 #!/bin/bash
 set -x
-export PS4=' + exevs_hurricane_regional_early_tropcyc_legacy_plots.sh line $LINENO: '
+export PS4=' + exevs_hurricane_regional_early_tropcyc_plots.sh line $LINENO: '
 
 export stormYear=${YYYY}
 export basinlist="al ep"
-export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \ # HAFS became operational on June 27, 2023.
-	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  # Any runs for AL01, AL02, AL03 are not included in input.
+export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \  
+	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"   
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -73,15 +73,15 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
-export fhr_list="0,12,24,36,48,60,72,96,120"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
-export model_plot_name_list="HFAI,HFBI,HWFI,HMNI,OFCL"
+export fhr_list="0,12,24,36,48,60,72,96,120,132"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+export model_plot_name_list="HFAI,HFBI,HWFI,HMNI,GFSI,CTCI"
 export plot_CI_bars="NO"
 export under="_"
 export tc_name=${stbasin}${under}${stormYear}${under}${stormName}
 export basin=${stbasin}
 export tc_num=${stormNumber}
-export tropcyc_model_type="regional_legacy"
+export tropcyc_model_type="regional"
 python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_average.py
 
 #/lfs/h2/emc/ptmp/jiayi.peng/metTC/wp02/plot/WP_2022_MALAKAS/images
@@ -140,15 +140,15 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
-export fhr_list="0,12,24,36,48,60,72,96,120"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
-export model_plot_name_list="HFAI,HFBI,HWFI,HMNI,OFCL"
+export fhr_list="0,12,24,36,48,60,72,96,120,132"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+export model_plot_name_list="HFAI,HFBI,HWFI,HMNI,GFSI,CTCI"
 export plot_CI_bars="NO"
 export stormNameB=Basin
 export tc_name=${stbasin}${under}${stormYear}${under}${stormNameB}
 export basin=${stbasin}
 export tc_num= 
-export tropcyc_model_type="regional_legacy"
+export tropcyc_model_type="regional"
 python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_average.py
 
 bimgs=$(ls ${metTCcomout}/plot/${tc_name}/images/* |wc -l)
@@ -172,4 +172,3 @@ fi
 
 ### bas do loop end
 done
-
