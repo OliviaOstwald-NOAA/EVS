@@ -41,7 +41,7 @@ export PDY=20241231
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
 export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/global.tracks.atcfunix.24
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/tracks.atcfunix.24
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 

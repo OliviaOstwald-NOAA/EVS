@@ -76,7 +76,7 @@ export img_quality="low"
 
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
 export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
-export model_plot_name_list="GEFS,EENS,CENS,UKMN"
+export model_plot_name_list="GEFS,EEMN,CEMN,UKMN"
 export plot_CI_bars="NO"
 export under="_"
 export tc_name=${stbasin}${under}${stormYear}${under}${stormName}
@@ -143,7 +143,7 @@ export img_quality="low"
 
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
 export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
-export model_plot_name_list="GEFS,EENS,CENS,UKMN"
+export model_plot_name_list="GEFS,EEMN,CEMN,UKMN"
 export plot_CI_bars="NO"
 export stormNameB=Basin
 export tc_name=${stbasin}${under}${stormYear}${under}${stormNameB}
