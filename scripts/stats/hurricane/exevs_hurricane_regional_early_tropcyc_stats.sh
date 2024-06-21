@@ -81,14 +81,15 @@ grep "03, HFBI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormB
 grep "03, HWFI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HMNI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, AVNI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, CTCI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03, CTCI" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFAI/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFBI/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HWFI/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HMNI/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, AVNI/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, CTCI/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-export Model_List="MD01,MD02,MD03,MD04,MD05,MD06"
+#sed -i 's/03, CTCI/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
+export Model_List="MD01,MD02,MD03,MD04,MD05"
+#export Model_List="MD01,MD02,MD03,MD04,MD05,MD06"
 #export Model_Plot=HFAI,HFBI,HWFI,HMNI,AVNI,CTCI"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  
