@@ -39,11 +39,14 @@ export PDY=20241231
 #Set PDY to override setpdy.sh called in the j-jobs
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/regionalTrack/tracks.atcfunix.24
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/syndat_tcvitals.2024
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/tracks.atcfunix.24
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
+#export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
+#export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/regionalTrack/tracks.atcfunix.24
+#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
 #export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
 #export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/regional.tracks.atcfunix.24
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
