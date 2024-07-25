@@ -56,22 +56,25 @@ if model_type == 'global':
     'model4': {'color': '#E69F00',
                'marker': 'o', 'markersize': 7,
                'linestyle': 'solid', 'linewidth': 3},
-    'model5': {'color': '#00DC00',
-               'marker': 'o', 'markersize': 6,
-               'linestyle': 'solid', 'linewidth': 1.5},
-    'model6': {'color': '#56B4E9',
-               'marker': 'o', 'markersize': 6,
-               'linestyle': 'solid', 'linewidth': 1.5},
-    'model7': {'color': '#696969',
-               'marker': 's', 'markersize': 6,
-               'linestyle': 'solid', 'linewidth': 1.5},
-    'model8': {'color': '#8400C8',
+    'model5': {'color': '#000000',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model6': {'color': '#FB2020',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model7': {'color': '#1E3CFF',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model8': {'color': '#E69F00',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model9': {'color': '#8400C8',
                'marker': 'D', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
-    'model9': {'color': '#D269C1',
+    'model10': {'color': '#D269C1',
                'marker': 's', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
-    'model10': {'color': '#F0E492',
+    'model11': {'color': '#F0E492',
                'marker': 'o', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
     'obs': {'color': '#AAAAAA',
@@ -87,17 +90,17 @@ elif model_type == 'regional':
                'marker': 'o', 'markersize': 7,
                'linestyle': 'solid', 'linewidth': 3},
     'model3': {'color': '#E63B7F',
-               'marker': 'D', 'markersize': 7,
-               'linestyle': 'solid', 'linewidth': 3},
+               'marker': 'D', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 2.5},
     'model4': {'color': '#49D9DE',
-               'marker': 'D', 'markersize': 7,
-               'linestyle': 'solid', 'linewidth': 3},
+               'marker': 'D', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 2.5},
     'model5': {'color': '#000000',
-               'marker': 'o', 'markersize': 7,
-               'linestyle': 'solid', 'linewidth': 3},
+               'marker': 'o', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 2.5},
     'model6': {'color': '#56B4E9',
-               'marker': 'o', 'markersize': 7,
-               'linestyle': 'solid', 'linewidth': 3},
+               'marker': 'o', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 2.5},
     'model7': {'color': '#696969',
                'marker': 's', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
@@ -200,9 +203,13 @@ if os.path.exists(summary_tcst_filename):
             if COLUMN_group == 'AMAX_WIND-BMAX_WIND':
                 formal_stat_name = 'Intensity Bias (knots)'
             elif COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)':
-                formal_stat_name = 'Absolute Intensity Error (knots)'
+                formal_stat_name = 'Absolute Intensity Error/Spread (knots)'
+            elif COLUMN_group == 'ABS(MAX_WIND_STDEV)':
+                formal_stat_name =  'Absolute Intensity Spread (knots)'
             elif COLUMN_group == 'ABS(TK_ERR)':
-                formal_stat_name =  'Absolute Track Error (nm)'
+                formal_stat_name =  'Absolute Track Error/Spread (nm)'
+            elif COLUMN_group == 'ABS(TRACK_SPREAD)':
+                formal_stat_name = 'Absolute Track Spread (nm)'
             elif COLUMN_group == 'ALTK_ERR':
                 formal_stat_name =  'Along Track Bias (nm)'
             elif COLUMN_group == 'CRTK_ERR':
@@ -405,7 +412,7 @@ if os.path.exists(summary_tcst_filename):
                 while y_axis_max < stat_max:
                     y_axis_max = y_axis_max + y_axis_tick_inc
 
-            if COLUMN_group == 'ABS(TK_ERR)' or COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)':
+            if COLUMN_group == 'ABS(TK_ERR)' or COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)' or COLUMN_group == 'ABS(TRACK_SPREAD)' or COLUMN_group == 'ABS(MAX_WIND_STDEV)':
                 y_axis_min = 0
             #y_axis_max = y_axis_max + 50.0
             ax.set_yticks(
@@ -419,7 +426,7 @@ if os.path.exists(summary_tcst_filename):
                 while stat_max >= ax.get_ylim()[1]:
                     y_axis_max = y_axis_max + y_axis_tick_inc
                     y_axis_min = y_axis_max * (-1.0) - 50.0
-                    if COLUMN_group == 'ABS(TK_ERR)' or COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)':
+                    if COLUMN_group == 'ABS(TK_ERR)' or COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)' or COLUMN_group == 'ABS(TRACK_SPREAD)' or COLUMN_group == 'ABS(MAX_WIND_STDEV)':
                        y_axis_min = 0
                     y_axis_max = y_axis_max + 50.0
                     ax.set_yticks(
