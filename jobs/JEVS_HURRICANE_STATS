@@ -62,11 +62,7 @@ fi
 ##############################################
 if [ ${RUN} = "global_det" -a ${VERIF_CASE} = "tropcyc" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
-<<<<<<< HEAD
 export YY24=`echo ${PDY} | cut -c3-4`
-=======
-export YY23=`echo ${PDY} | cut -c3-4`
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 export COMINvit=${COMINvit:-/your/TC/vitals/file}
 export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
@@ -74,10 +70,7 @@ export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 elif [ ${RUN} = "global_ens" -a ${VERIF_CASE} = "tropcyc" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
-<<<<<<< HEAD
 export YY24=`echo ${PDY} | cut -c3-4`
-=======
-export YY23=`echo ${PDY} | cut -c3-4`
 export COMINvit=${COMINvit:-/your/TC/vitals/file}
 export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
@@ -85,8 +78,7 @@ export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 elif [ ${RUN} = "global_ens" -a ${VERIF_CASE} = "spread" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
-export YY23=`echo ${PDY} | cut -c3-4`
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
+export YY24=`echo ${PDY} | cut -c3-4`
 export COMINvit=${COMINvit:-/your/TC/vitals/file}
 export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
@@ -94,11 +86,7 @@ export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 elif [ ${RUN} = "global_det" -a ${VERIF_CASE} = "tcgen" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
-<<<<<<< HEAD
 #export YY24=`echo ${PDY} | cut -c3-4`
-=======
-#export YY23=`echo ${PDY} | cut -c3-4`
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 export COMINgenesis=${COMINgenesis:-/your/TC/genesis/data/dir}
 export COMINadeckNHC=${COMINadeckNHC:-/your/NHC/adeck/data/dir}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
@@ -123,11 +111,7 @@ export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 elif [ ${RUN} = "regional_late" -a ${VERIF_CASE} = "tropcyc" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
-<<<<<<< HEAD
 export YY24=`echo ${PDY} | cut -c3-4`
-=======
-export YY23=`echo ${PDY} | cut -c3-4`
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 export COMINvit=${COMINvit:-/your/TC/vitals/file}
 export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
