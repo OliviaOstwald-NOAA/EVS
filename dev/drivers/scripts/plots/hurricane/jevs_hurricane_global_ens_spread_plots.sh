@@ -3,16 +3,18 @@
 #PBS -j oe
 #PBS -A ENSTRACK-DEV
 #PBS -q dev
+<<<<<<< HEAD
 #PBS -l select=1:ncpus=2:mem=4GB
 ##PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1
 #PBS -l walltime=03:00:00
+=======
+#PBS -l select=1:ncpus=1:mem=4GB
+#PBS -l walltime=01:00:00
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 #PBS -l debug=true
 #PBS -V
 
 set -x
-
-#%include <head.h>
-#%include <envir-p1.h>
 
 export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
 source ${HOMEevs}/versions/run.ver
@@ -60,11 +62,4 @@ export KEEPDATA=YES
 # CALL executable job script here
 $HOMEevs/jobs/JEVS_HURRICANE_PLOTS
 
-%include <tail.h>
-%manual
-######################################################################
-# Purpose: This job will generate the grid2obs statistics for the HRRR
-#          model and generate stat files.
-######################################################################
-%end
 

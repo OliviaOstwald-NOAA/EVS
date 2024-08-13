@@ -74,6 +74,7 @@ stormName=$(sed "s/ //g" <<< $VARIABLE2)
 echo "Name_${stormName}_Name"
 echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 
+<<<<<<< HEAD
 #---get the model forecast tracks "GEFS/EENS/CENS/UENS members" from archive file "tracks.atcfunix.${YY24}"
 grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY24}_${stormBasin}${stormNumber}
 grep "03, AP" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
@@ -81,13 +82,26 @@ grep "03, EN" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBas
 grep "03, EP" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, CP" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep -a "03, UE" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+=======
+#---get the model forecast tracks "GEFS/EENS/CENS/UENS members" from archive file "tracks.atcfunix.${YY23}"
+grep -a "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY23}_${stormBasin}${stormNumber}
+grep "03, AP" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, EN" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, EP" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, CP" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep -a "03, UE" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 #sed -i 's/03, AEMN/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 #sed -i 's/03, EEMN/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 #sed -i 's/03, CEMN/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 #sed -i 's/03, UKMN/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
+<<<<<<< HEAD
 #export Model_List="MD01,MD02,MD03"
 export Model_List="MD01,MD02,MD03,MD04"
 #export Model_Plot="GEFS,EENS,CENS"
+=======
+export Model_List="MD01,MD02,MD03,MD04"
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 export Model_Plot="GEFS,EENS,CENS,UENS"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  
@@ -113,7 +127,11 @@ export enddate="$YY02$MM02$DD02$HH02"
 echo "$startdate, $enddate"
 
 #--- run for TC_pairs
+<<<<<<< HEAD
 cp ${PARMevs}/metplus_config/stats/hurricane/TCPairs_spread_template.conf .
+=======
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCPairs_spread_template.conf .
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 export SEARCH0="METBASE_template"
 export SEARCH1="INPUT_BASE_template"
 export SEARCH2="OUTPUT_BASE_template"

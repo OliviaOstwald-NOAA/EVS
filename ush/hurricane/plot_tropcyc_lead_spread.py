@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+#!/usr/bin/env python3
+
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 from __future__ import (print_function, division)
 import os
 import sys
@@ -57,6 +62,7 @@ if model_type == 'global':
                'marker': 'o', 'markersize': 7,
                'linestyle': 'solid', 'linewidth': 3},
     'model5': {'color': '#000000',
+<<<<<<< HEAD
                'marker': 'D', 'markersize': 7,
                'linestyle': 'dashed', 'linewidth': 3},
     'model6': {'color': '#FB2020',
@@ -75,6 +81,23 @@ if model_type == 'global':
                'marker': 's', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
     'model11': {'color': '#F0E492',
+=======
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model6': {'color': '#FB2020',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model7': {'color': '#1E3CFF',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model8': {'color': '#E69F00',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'dashed', 'linewidth': 3},
+    'model9': {'color': '#D269C1',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model10': {'color': '#F0E492',
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
                'marker': 'o', 'markersize': 6,
                'linestyle': 'solid', 'linewidth': 1.5},
     'obs': {'color': '#AAAAAA',
@@ -117,6 +140,91 @@ elif model_type == 'regional':
             'marker': 'None', 'markersize': 0,
             'linestyle': 'solid', 'linewidth': 2}
   }
+<<<<<<< HEAD
+=======
+elif model_type == 'regional_ops':
+  model_obs_plot_settings_dict = {
+    'model1': {'color': '#8400C8',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 3},
+    'model2': {'color': '#00DC00',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model3': {'color': '#000000',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model4': {'color': '#56B4E9',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model5': {'color': '#696969',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+ }
+elif model_type == 'regional_all':
+  model_obs_plot_settings_dict = {
+    'model1': {'color': '#1E3CFF',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 3},
+    'model2': {'color': '#FF3399',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model3': {'color': '#56B4E9',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model4': {'color': '#E69F00',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model5': {'color': '#8400C8',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model6': {'color': '#00DC00',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model7': {'color': '#696969',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+ }
+elif model_type == 'regional_legacy':
+  model_obs_plot_settings_dict = {
+    'model1': {'color': '#8400C8',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 3},
+    'model2': {'color': '#00DC00',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model3': {'color': '#FF00FF',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model4': {'color': '#00FFFF',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model5': {'color': '#696969',
+               'marker': 's', 'markersize': 6,
+               'linestyle': 'solid', 'linewidth': 1.5},
+ }
+elif model_type == 'regional_all':
+  model_obs_plot_settings_dict = {
+    'model1': {'color': '#8400C8',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 3},
+    'model2': {'color': '#00DC00',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 3},
+    'model3': {'color': '#FF00FF',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model4': {'color': '#00FFFF',
+               'marker': 'D', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model5': {'color': '#000000',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+    'model6': {'color': '#56B4E9',
+               'marker': 'o', 'markersize': 7,
+               'linestyle': 'solid', 'linewidth': 1.5},
+ }
+
+>>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 
 noaa_logo_img_array = matplotlib.image.imread(
     os.path.join(os.environ['LOGOroot'], 'noaa.png')
