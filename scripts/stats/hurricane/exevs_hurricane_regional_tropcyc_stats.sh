@@ -75,13 +75,13 @@ echo "Name_${stormName}_Name"
 echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 
 #---get the model forecast tracks "AVNO/HWRF/HMON/CTCX" from archive file "tracks.atcfunix.${YY23}"
-grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY23}_${stormBasin}${stormNumber}
-grep "03, HFSA" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HFSB" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HWRF" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HMON" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, AVNO" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, CTCX" tracks.atcfunix.${YY23}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY20}_${stormBasin}${stormNumber}
+grep "03, HFSA" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HFSB" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HWRF" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HMON" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, AVNO" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, CTCX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSA/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSB/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HWRF/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
