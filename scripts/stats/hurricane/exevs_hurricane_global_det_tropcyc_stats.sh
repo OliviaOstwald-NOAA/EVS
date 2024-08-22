@@ -81,22 +81,23 @@ grep "03, HR3a" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormB
 grep "03, HR3b" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HR2N" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HR12" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03,  EMX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03,  CMC" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HWRF" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HMON" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03,  EMX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03,  CMC" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03, HWRF" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03, HMON" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 #grep "03,  UKM" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, V16R/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HR3a/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HR3b/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HR2N/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HR12/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03,  EMX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03,  CMC/03, MD07/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, HWRF/03, MD08/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, HMON/03, MD09/' a${stormBasin}${stormNumber}${stormYear}.dat
+#sed -i 's/03,  EMX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
+#sed -i 's/03,  CMC/03, MD07/' a${stormBasin}${stormNumber}${stormYear}.dat
+#sed -i 's/03, HWRF/03, MD08/' a${stormBasin}${stormNumber}${stormYear}.dat
+#sed -i 's/03, HMON/03, MD09/' a${stormBasin}${stormNumber}${stormYear}.dat
 #sed -i 's/03,  UKM/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
-export Model_List="MD01,MD02,MD03,MD04,MD05,MD06,MD07,MD08,MD09"
+export Model_List="MD01,MD02,MD03,MD04,MD05"
+#export Model_List="MD01,MD02,MD03,MD04,MD05,MD06,MD07,MD08,MD09"
 #export Model_Plot="GFS,ECMWF,CMC,UKM"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  

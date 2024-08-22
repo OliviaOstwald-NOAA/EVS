@@ -74,10 +74,10 @@ export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
 
-export fhr_list="0,12,24,36,48,60,72,84,96,108,120"
+export fhr_list="0,12,24,36,48,60,72"
 #export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06,MD07,MD08,MD09"
-export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1,EMX,CMC,HWRF,HMON"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
+export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1"
 #export model_plot_name_list="GFS,ECMWF,CMC,HR3a"
 export plot_CI_bars="NO"
 export under="_"
@@ -143,10 +143,10 @@ export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
 
-export fhr_list="0,12,24,36,48,60,72,84,96,108,120"
+export fhr_list="0,12,24,36,48,60,72"
 #export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06,MD07,MD08,MD09"
-export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1,EMX,CMC,HWRF,HMON"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
+export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1"
 #export model_plot_name_list="GFS,ECMWF,CMC,HR3a"
 export plot_CI_bars="NO"
 export stormNameB=Basin
