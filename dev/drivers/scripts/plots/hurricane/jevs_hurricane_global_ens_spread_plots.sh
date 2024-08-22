@@ -12,7 +12,6 @@
 #PBS -l walltime=01:00:00
 >>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 #PBS -l debug=true
-#PBS -V
 
 set -x
 
