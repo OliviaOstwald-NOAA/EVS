@@ -32,13 +32,17 @@ module load prod_envir/${prod_envir_ver}
 source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 
 #Set PDY to override setpdy.sh called in the j-jobs
-export PDY=20231231
+export PDY=20181231
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/syndat_tcvitals.2023
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/tracks.atcfunix.23
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gefsv13/evs-data/2018/syndat_tcvitals.2018
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gefsv13/evs-data/2018/epr5.tracks.atcfunix.18
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gefsv13/evs-data/2018/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gefsv13/evs-data/2018/bdeck
+#export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/syndat_tcvitals.2023
+#export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/tracks.atcfunix.23
+#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
+#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
