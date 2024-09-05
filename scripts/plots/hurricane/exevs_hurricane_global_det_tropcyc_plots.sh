@@ -3,9 +3,11 @@ set -x
 export PS4=' + exevs_hurricane_global_det_tropcyc_plots.sh line $LINENO: '
 
 export stormYear=${YYYY}
-export basinlist="al ep wp"
-export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
-	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
+export basinlist="al"
+#export basinlist="al ep wp"
+export numlist="02"
+#export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
+#	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -74,10 +76,8 @@ export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03"
-#export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
-export model_plot_name_list="GFS,ECMWF,CMC"
-#export model_plot_name_list="GFS,ECMWF,CMC,UKM"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
+export model_plot_name_list="GFS,ECMWF,CMC,UKM"
 export plot_CI_bars="NO"
 export under="_"
 export tc_name=${stbasin}${under}${stormYear}${under}${stormName}
@@ -97,11 +97,11 @@ if [ $nimgs -ne 0 ]; then
   convert CRTK_ERR_fhrmean_${tc_name}_global.png CRTK_ERR_fhrmean_${tc_name}_global.gif
   rm -f *.png
   if [ "$SENDCOM" = 'YES' ]; then
-    cp ${STORMroot}/plot/${tc_name}/images/ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det.abswind_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det.wind_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png 
-    cp ${STORMroot}/plot/${tc_name}/images/ABSTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det.abstk_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/ALTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det.altk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/CRTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det.crtk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det_period3d8s.abswind_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det_period3d8s.wind_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png 
+    cp ${STORMroot}/plot/${tc_name}/images/ABSTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det_period3d8s.abstk_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ALTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det_period3d8s.altk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/CRTK_ERR_fhrmean_${tc_name}_global.gif ${comoutroot}/evs.hurricane_global_det_period3d8s.crtk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
   fi
 fi
 
@@ -142,10 +142,8 @@ export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03"
-#export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
-export model_plot_name_list="GFS,ECMWF,CMC"
-#export model_plot_name_list="GFS,ECMWF,CMC,UKM"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
+export model_plot_name_list="GFS,ECMWF,CMC,UKM"
 export plot_CI_bars="NO"
 export stormNameB=Basin
 export tc_name=${stbasin}${under}${stormYear}${under}${stormNameB}

@@ -1,5 +1,5 @@
 #PBS -S /bin/bash
-#PBS -N jevs_hurricane_regional_tropcyc_stats
+#PBS -N jevs_hurricane_regional_tropcyc_stats_period3dates
 #PBS -j oe
 #PBS -A ENSTRACK-DEV
 #PBS -q dev
@@ -25,7 +25,7 @@ export STEP=stats
 export VERIF_CASE=tropcyc
 export envir=dev
 export cyc=00
-export job=jevs_${COMPONENT}_${RUN}_${VERIF_CASE}_${STEP}_${cyc}
+export job=jevs_${COMPONENT}_${RUN}_${VERIF_CASE}_${STEP}_${cyc}_period3dates
 export jobid=$job.${PBS_JOBID:-$$}
 
 ############################################################
@@ -38,6 +38,7 @@ export PDY=20241231
 #Set PDY to override setpdy.sh called in the j-jobs
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
+<<<<<<< HEAD
 export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
 export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/regionalTrack/tracks.atcfunix.24
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
@@ -46,6 +47,20 @@ export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bde
 #export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/regional.tracks.atcfunix.24
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 #export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+=======
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/syndat_tcvitals.2024
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/tracks.atcfunix.24
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
+#export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
+#export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/regionalTrack/tracks.atcfunix.24
+#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+##export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
+##export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/regional.tracks.atcfunix.24
+##export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+##export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+>>>>>>> 2bfe937b (Files changed prior to July 2024 emergency prod switch)
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
