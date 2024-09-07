@@ -75,11 +75,11 @@ echo "Name_${stormName}_Name"
 echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 
 #---get the model forecast tracks "AVNO/EMX/CMC/UKM" from archive file "tracks.atcfunix.${YY23}"
-grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY20}_${stormBasin}${stormNumber}
-grep "03, AVNO" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03,  EMX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03,  CMC" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-#grep "03,  UKX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY24}_${stormBasin}${stormNumber}
+grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03,  EMX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03,  CMC" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03,  UKX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, AVNO/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03,  EMX/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03,  CMC/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat

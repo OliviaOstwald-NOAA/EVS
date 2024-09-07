@@ -34,14 +34,14 @@ export jobid=$job.${PBS_JOBID:-$$}
 module reset
 source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh 
 
-export PDY=20201231 
+export PDY=20241231 
 #Set PDY to override setpdy.sh called in the j-jobs
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/syndat_tcvitals.2020
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/tracks.atcfunix.20
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/regionalTrack/tracks.atcfunix.24
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d

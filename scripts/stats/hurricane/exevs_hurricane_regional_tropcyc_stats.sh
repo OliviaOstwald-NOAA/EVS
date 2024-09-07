@@ -75,20 +75,20 @@ echo "Name_${stormName}_Name"
 echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 
 #---get the model forecast tracks "AVNO/HWRF/HMON/CTCX" from archive file "tracks.atcfunix.${YY23}"
-grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY20}_${stormBasin}${stormNumber}
-grep "03, HFSA" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HFSB" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HWRF" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HMON" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, AVNO" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, CTCX" tracks.atcfunix.${YY20}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY24}_${stormBasin}${stormNumber}
+grep "03, HFSA" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HFSB" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HWRF" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, HMON" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03, CTCX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSA/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSB/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HWRF/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HMON/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, AVNO/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, CTCX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-export Model_List="MD01,MD02,MD03,MD04,MD05,MD06"
+#sed -i 's/03, CTCX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
+export Model_List="MD01,MD02,MD03,MD04,MD05"
 #export Model_Plot="HFSA,HFSB,HWRF,HMON,AVNO,CTCX"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  
