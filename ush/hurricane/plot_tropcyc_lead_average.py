@@ -95,9 +95,9 @@ elif model_type == 'regional':
     'model5': {'color': '#000000',
                'marker': 'o', 'markersize': 7,
                'linestyle': 'solid', 'linewidth': 3},
-    'model6': {'color': '#8400C8',
+    'model6': {'color': '#56B4E9',
                'marker': 'o', 'markersize': 7,
-               'linestyle': 'dashed', 'linewidth': 3},
+               'linestyle': 'solid', 'linewidth': 3},
     'model7': {'color': '#00DC00',
                'marker': 'o', 'markersize': 7,
                'linestyle': 'dashed', 'linewidth': 3},
@@ -198,15 +198,15 @@ if os.path.exists(summary_tcst_filename):
         for COLUMN_group in summary_tcst_data_groupby_COLUMN.groups.keys():
             print("Creating plot for "+COLUMN_group)
             if COLUMN_group == 'AMAX_WIND-BMAX_WIND':
-                formal_stat_name = 'Intensity Bias (knots) Full Period'
+                formal_stat_name = 'Intensity Bias (knots)'
             elif COLUMN_group == 'ABS(AMAX_WIND-BMAX_WIND)':
-                formal_stat_name = 'Absolute Intensity Error (knots) Full Period'
+                formal_stat_name = 'Absolute Intensity Error (knots)'
             elif COLUMN_group == 'ABS(TK_ERR)':
-                formal_stat_name =  'Absolute Track Error (nm) Full Period'
+                formal_stat_name =  'Absolute Track Error (nm)'
             elif COLUMN_group == 'ALTK_ERR':
-                formal_stat_name =  'Along Track Bias (nm) Full Period'
+                formal_stat_name =  'Along Track Bias (nm)'
             elif COLUMN_group == 'CRTK_ERR':
-                formal_stat_name =  'Cross Track Bias (nm) Full Period'
+                formal_stat_name =  'Cross Track Bias (nm)'
             else:
                 formal_stat_name = COLUMN_group
             summary_tcst_data_COLUMN = (

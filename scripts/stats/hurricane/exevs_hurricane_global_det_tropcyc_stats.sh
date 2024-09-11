@@ -6,11 +6,9 @@ export MetOnMachine=${MetOnMachine:-$MET_ROOT}
 export LEAD_List="-lead 000000 -lead 120000 -lead 240000 -lead 360000 -lead 480000 -lead 600000 -lead 720000 -lead 840000 -lead 960000 -lead 1080000 -lead 1200000 -lead 1320000 -lead 1440000 -lead 1560000 -lead 1680000"
 
 export stormYear=${YYYY}
-export basinlist="al"
-#export basinlist="al ep wp"
-export numlist="02"
-#export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
-#	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
+export basinlist="al ep wp"
+export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
+	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -81,12 +79,13 @@ grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY24}_${stor
 grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03,  EMX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03,  CMC" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03,  UKM" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+#grep "03,  UKM" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, AVNO/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03,  EMX/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03,  CMC/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03,  UKM/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
-export Model_List="MD01,MD02,MD03,MD04"
+#sed -i 's/03,  UKM/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
+export Model_List="MD01,MD02,MD03"
+#export Model_List="MD01,MD02,MD03,MD04"
 #export Model_Plot="GFS,ECMWF,CMC,UKM"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  

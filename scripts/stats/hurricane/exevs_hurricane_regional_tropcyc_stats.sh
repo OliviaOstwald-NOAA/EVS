@@ -6,11 +6,9 @@ export MetOnMachine=$MET_ROOT
 export LEAD_List="-lead 000000 -lead 060000 -lead 120000 -lead 180000 -lead 240000 -lead 300000 -lead 360000 -lead 420000 -lead 480000 -lead 540000 -lead 600000 -lead 660000 -lead 720000 -lead 780000 -lead 840000 -lead 900000 -lead 960000 -lead 1020000 -lead 1080000 -lead 1140000 -lead 1200000 -lead 1260000"
 
 export stormYear=${YYYY}
-export basinlist="al"
-#export basinlist="al ep"
-export numlist="02" 
-#export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \ 
-#	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  
+export basinlist="al ep"
+export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \ 
+	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -83,19 +81,14 @@ grep "03, HFSB" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormB
 grep "03, HWRF" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HMON" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HV2A" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, HV2B" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 #grep "03, CTCX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSA/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSB/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HWRF/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HMON/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, AVNO/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, HV2A/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, HV2B/03, MD07/' a${stormBasin}${stormNumber}${stormYear}.dat
 #sed -i 's/03, CTCX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-export Model_List="MD01,MD02,MD03,MD04,MD05,MD06,MD07"
-#export Model_List="MD01,MD02,MD03,MD04,MD05"
+export Model_List="MD01,MD02,MD03,MD04,MD05"
 #export Model_List="MD01,MD02,MD03,MD04,MD05,MD06"
 #export Model_Plot="HFSA,HFSB,HWRF,HMON,AVNO,CTCX"
 
@@ -189,74 +182,74 @@ fi
 ### num do loop end
 done
 
-##---  Atlantic/EastPacific/WestPacific Basin TC_Stat 
-#if [ ${stormBasin} = "al" ]; then
-#  export comoutbas=${comoutatl}
-#elif [ ${stormBasin} = "ep" ]; then
-#  export comoutbas=${comoutepa}
-#elif [ ${stormBasin} = "wp" ]; then
-#  export comoutbas=${comoutwpa}
-#fi
+#---  Atlantic/EastPacific/WestPacific Basin TC_Stat 
+if [ ${stormBasin} = "al" ]; then
+  export comoutbas=${comoutatl}
+elif [ ${stormBasin} = "ep" ]; then
+  export comoutbas=${comoutepa}
+elif [ ${stormBasin} = "wp" ]; then
+  export comoutbas=${comoutwpa}
+fi
 
-## remove previously generated basin stats
-#if [ -d ${comoutbas}/tc_stat ]; then
-#  rm -rf ${comoutbas}/tc_stat
-#fi
+# remove previously generated basin stats
+if [ -d ${comoutbas}/tc_stat ]; then
+  rm -rf ${comoutbas}/tc_stat
+fi
 
 
-#nfile=$(ls ${comoutbas}/*.tcst |wc -l)
-#if [ $nfile -ne 0 ]; then
+nfile=$(ls ${comoutbas}/*.tcst |wc -l)
+if [ $nfile -ne 0 ]; then
 
-#export mdh=010100
-#export startdateB=${YYYY}${mdh}
-#export metTCcomin=${comoutbas}
+export mdh=010100
+export startdateB=${YYYY}${mdh}
+export metTCcomin=${comoutbas}
 
-#if [ ${stormBasin} = "al" ]; then
-#  export metTCcomout=${DATA}/metTC/atlantic
-#  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
-#elif [ ${stormBasin} = "ep" ]; then
-#  export metTCcomout=${DATA}/metTC/eastpacific
-#  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
-#elif [ ${stormBasin} = "wp" ]; then
-#  export metTCcomout=${DATA}/metTC/westpacific
-#  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
-#fi
+if [ ${stormBasin} = "al" ]; then
+  export metTCcomout=${DATA}/metTC/atlantic
+  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+elif [ ${stormBasin} = "ep" ]; then
+  export metTCcomout=${DATA}/metTC/eastpacific
+  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+elif [ ${stormBasin} = "wp" ]; then
+  export metTCcomout=${DATA}/metTC/westpacific
+  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+fi
 
-#cd $metTCcomout
-##export SEARCH1=INPUT_BASE_template
-##export SEARCH2=OUTPUT_BASE_template
-##export SEARCH3=INIT_BEG_template
-##export SEARCH4=INIT_END_template
+cd $metTCcomout
+#export SEARCH1=INPUT_BASE_template
+#export SEARCH2=OUTPUT_BASE_template
+#export SEARCH3=INIT_BEG_template
+#export SEARCH4=INIT_END_template
 
-#cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
 
-##export SEARCHy="LEAD_template"
-#sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
+#export SEARCHy="LEAD_template"
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
 
-##export SEARCH7="TC_STAT_INIT_BEG_temp"
-##export SEARCH8="TC_STAT_INIT_END_temp"
-#export firstday="0101_00"
-#export lastday="1231_18"
-#export symdhB=${YYYY}${firstday}
-#export eymdhB=${YYYY}${lastday}
-#echo "$symdhB, $eymdhB"
+#export SEARCH7="TC_STAT_INIT_BEG_temp"
+#export SEARCH8="TC_STAT_INIT_END_temp"
+export firstday="0101_00"
+export lastday="1231_18"
+export symdhB=${YYYY}${firstday}
+export eymdhB=${YYYY}${lastday}
+echo "$symdhB, $eymdhB"
 
-#sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
 
-#run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
-#if [ "$SENDCOM" = 'YES' ]; then
-#  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
-#  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
-#  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
-#fi
-#fi
+run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
+if [ "$SENDCOM" = 'YES' ]; then
+  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
+  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
+  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
+fi
+fi
 
 #### bas do loop end
 done

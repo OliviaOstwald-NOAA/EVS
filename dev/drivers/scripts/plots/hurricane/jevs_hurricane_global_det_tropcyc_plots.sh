@@ -1,5 +1,5 @@
 #PBS -S /bin/bash
-#PBS -N jevs_hurricane_global_det_tropcyc_plots_period3dates
+#PBS -N jevs_hurricane_global_det_tropcyc_plots
 #PBS -j oe
 #PBS -A ENSTRACK-DEV
 #PBS -q dev
@@ -25,7 +25,7 @@ export STEP=plots
 export VERIF_CASE=tropcyc
 export envir=dev
 export cyc=00
-export job=jevs_${COMPONENT}_${RUN}_${VERIF_CASE}_${STEP}_${cyc}_period3dates
+export job=jevs_${COMPONENT}_${RUN}_${VERIF_CASE}_${STEP}_${cyc}
 export jobid=$job.${PBS_JOBID:-$$}
 
 ############################################################
@@ -45,15 +45,12 @@ export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMP
 export FIXevs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/EVS_fix
 
 #Define TC-vital file, and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/syndat_tcvitals.2024
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/beryl/data/two/bdeck
-#export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
-#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
-#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
-##export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
-##export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-##export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
+#export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
+#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
