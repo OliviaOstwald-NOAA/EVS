@@ -251,5 +251,5 @@ if [ "$SENDCOM" = 'YES' ]; then
 fi
 fi
 
-### bas do loop end
+#### bas do loop end
 done
