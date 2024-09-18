@@ -109,10 +109,7 @@ sed -i 's/MD04/MD08/' tc_stat.track.spread
 
 cat tc_stat.JOB_LIST tc_stat.COL_NAME tc_stat.intensity.ERR tc_stat.intensity.STDEV tc_stat.track.ERR tc_stat.track.spread > tc_stat.NEW
 sed -i 's/-amodel MD01 -amodel MD02 -amodel MD03/-amodel MD01 -amodel MD02 -amodel MD03 -amodel MD04 -amodel MD05 -amodel MD06 -amodel MD07 -amodel MD08/' tc_stat.NEW
-<<<<<<< HEAD
 #sed -i 's/-amodel MD01 -amodel MD02 /-amodel MD01 -amodel MD02 -amodel MD03 -amodel MD04/' tc_stat.NEW
-=======
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 
 sed -i 's/-column AMAX_WIND-BMAX_WIND -column ABS(AMAX_WIND-BMAX_WIND) -column ALTK_ERR -column CRTK_ERR -column ABS(TK_ERR) -column ABS(TRACK_SPREAD) -column ABS(MAX_WIND_STDEV)/-column ABS(AMAX_WIND-BMAX_WIND) -column ABS(TK_ERR)/' tc_stat.NEW
 cp tc_stat.NEW tc_stat.out
@@ -123,7 +120,7 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${STORMroot}
 cd $STORMdata
 
-python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_spread.py
+python ${USHevs}/${COMPONENT}/plot_spread_lead_average.py
 
 #/lfs/h2/emc/ptmp/jiayi.peng/metTC/wp02/plot/WP_2022_MALAKAS/images
 nimgs=$(ls ${STORMroot}/plot/${tc_name}/images/* |wc -l)
@@ -208,11 +205,8 @@ sed -i 's/MD03/MD07/' tc_stat.track.spread
 sed -i 's/MD04/MD08/' tc_stat.track.spread
 
 cat tc_stat.JOB_LIST tc_stat.COL_NAME tc_stat.intensity.ERR tc_stat.intensity.STDEV tc_stat.track.ERR tc_stat.track.spread > tc_stat.NEW
-<<<<<<< HEAD
-#sed -i 's/-amodel MD01 -amodel MD02/-amodel MD01 -amodel MD02 -amodel MD03 -amodel MD04/' tc_stat.NEW
-=======
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
 sed -i 's/-amodel MD01 -amodel MD02 -amodel MD03/-amodel MD01 -amodel MD02 -amodel MD03 -amodel MD04 -amodel MD05 -amodel MD06 -amodel MD07 -amodel MD08/' tc_stat.NEW
+#sed -i 's/-amodel MD01 -amodel MD02/-amodel MD01 -amodel MD02 -amodel MD03 -amodel MD04/' tc_stat.NEW
 
 sed -i 's/-column AMAX_WIND-BMAX_WIND -column ABS(AMAX_WIND-BMAX_WIND) -column ALTK_ERR -column CRTK_ERR -column ABS(TK_ERR) -column ABS(TRACK_SPREAD) -column ABS(MAX_WIND_STDEV)/-column ABS(AMAX_WIND-BMAX_WIND) -column ABS(TK_ERR)/' tc_stat.NEW
 cp tc_stat.NEW tc_stat.out
@@ -223,24 +217,18 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${metTCcomout}
 cd $metTCcomout
 
-python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_spread.py
+python ${USHevs}/${COMPONENT}/plot_spread_lead_average.py
 
 bimgs=$(ls ${metTCcomout}/plot/${tc_name}/images/* |wc -l)
 if [ $bimgs -ne 0 ]; then
   cd ${metTCcomout}/plot/${tc_name}/images
   convert ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.png ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif
-<<<<<<< HEAD
-=======
   convert ABSMAX_WIND_STDEV_fhrmean_${tc_name}_global.png ABSMAX_WIND_STDEV_fhrmean_${tc_name}_global.gif
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
   convert ABSTK_ERR_fhrmean_${tc_name}_global.png ABSTK_ERR_fhrmean_${tc_name}_global.gif
   rm -f *.png
   if [ "$SENDCOM" = 'YES' ]; then
     cp -r ${metTCcomout}/plot/${tc_name}/images/ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_global.gif ${comoutbas}/evs.hurricane_global_ens.abswind_err_spread.${stormBasin}.${stormYear}.season.png
-<<<<<<< HEAD
-=======
     cp -r ${metTCcomout}/plot/${tc_name}/images/ABSMAX_WIND_STDEV_fhrmean_${tc_name}_global.gif ${comoutbas}/evs.hurricane_global_ens.abswind_stdev_spread.${stormBasin}.${stormYear}.season.png
->>>>>>> 83978b7a1d6a14776032680db58b92e2196c71e5
     cp -r ${metTCcomout}/plot/${tc_name}/images/ABSTK_ERR_fhrmean_${tc_name}_global.gif ${comoutbas}/evs.hurricane_global_ens.abstk_err_spread.${stormBasin}.${stormYear}.season.png
   fi
 fi
