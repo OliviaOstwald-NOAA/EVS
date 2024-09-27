@@ -115,7 +115,7 @@ export enddate="$YY02$MM02$DD02$HH02"
 echo "$startdate, $enddate"
 
 #--- run for TC_pairs
-cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCPairs_template.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCPairs_windradii_template.conf .
 export SEARCH0="METBASE_template"
 export SEARCH1="INPUT_BASE_template"
 export SEARCH2="OUTPUT_BASE_template"
@@ -125,30 +125,30 @@ export SEARCH5="TC_PAIRS_CYCLONE_template"
 export SEARCH6="TC_PAIRS_BASIN_template"
 export SEARCHx="MODELLIST_template"
 
-sed -i "s|$SEARCH0|$MetOnMachine|g" TCPairs_template.conf
-sed -i "s|$SEARCH1|$STORMdata|g" TCPairs_template.conf
-sed -i "s|$SEARCH2|$STORMroot|g" TCPairs_template.conf
-sed -i "s|$SEARCH3|$startdate|g" TCPairs_template.conf
-sed -i "s|$SEARCH4|$enddate|g" TCPairs_template.conf
-sed -i "s|$SEARCH5|$stormNumber|g" TCPairs_template.conf
-sed -i "s|$SEARCH6|$stbasin|g" TCPairs_template.conf
-sed -i "s|$SEARCHx|$Model_List|g" TCPairs_template.conf
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH1|$STORMdata|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH2|$STORMroot|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH3|$startdate|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH4|$enddate|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH5|$stormNumber|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCH6|$stbasin|g" TCPairs_windradii_template.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCPairs_windradii_template.conf
 
-run_metplus.py -c $STORMdata/TCPairs_template.conf
+run_metplus.py -c $STORMdata/TCPairs_windradii_template.conf
 
 #--- run for TC_stat 
 cd $STORMdata
 
-cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_windradii_template.conf .
 
 export SEARCHy="LEAD_template"
-sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template.conf
-sed -i "s|$SEARCH1|$STORMdata|g" TCStat_template.conf
-sed -i "s|$SEARCH2|$STORMroot|g" TCStat_template.conf
-sed -i "s|$SEARCH3|$startdate|g" TCStat_template.conf
-sed -i "s|$SEARCH4|$startdate|g" TCStat_template.conf
-sed -i "s|$SEARCHx|$Model_List|g" TCStat_template.conf
-sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template.conf
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCH1|$STORMdata|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCH2|$STORMroot|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCH3|$startdate|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCH4|$startdate|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_windradii_template.conf
 
 export SEARCH7="TC_STAT_INIT_BEG_temp"
 export SEARCH8="TC_STAT_INIT_END_temp"
@@ -157,10 +157,10 @@ export symdh=${YY01}${MM01}${DD01}${under}${HH01}
 export eymdh=${YY02}${MM02}${DD02}${under}${HH02}
 echo "$symdh, $eymdh"
 
-sed -i "s|$SEARCH7|$symdh|g" TCStat_template.conf
-sed -i "s|$SEARCH8|$eymdh|g" TCStat_template.conf
+sed -i "s|$SEARCH7|$symdh|g" TCStat_windradii_template.conf
+sed -i "s|$SEARCH8|$eymdh|g" TCStat_windradii_template.conf
 
-run_metplus.py -c $STORMdata/TCStat_template.conf
+run_metplus.py -c $STORMdata/TCStat_windradii_template.conf
 
 if [ "$SENDCOM" = 'YES' ]; then
   if [ ! -d ${comoutroot}/tc_pairs ]; then mkdir -p ${comoutroot}/tc_pairs; fi
@@ -221,16 +221,16 @@ cd $metTCcomout
 #export SEARCH3=INIT_BEG_template
 #export SEARCH4=INIT_END_template
 
-cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_windradii_template_basin.conf .
 
 #export SEARCHy="LEAD_template"
-sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
-sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
-sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
-sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
-sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
-sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
-sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCH3|$startdateB|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCH4|$startdateB|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_windradii_template_basin.conf
 
 #export SEARCH7="TC_STAT_INIT_BEG_temp"
 #export SEARCH8="TC_STAT_INIT_END_temp"
@@ -240,8 +240,8 @@ export symdhB=${YYYY}${firstday}
 export eymdhB=${YYYY}${lastday}
 echo "$symdhB, $eymdhB"
 
-sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
-sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH7|$symdhB|g" TCStat_windradii_template_basin.conf
+sed -i "s|$SEARCH8|$eymdhB|g" TCStat_windradii_template_basin.conf
 
 run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
 if [ "$SENDCOM" = 'YES' ]; then
