@@ -90,19 +90,21 @@ python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_average.py
 nimgs=$(ls ${STORMroot}/plot/${tc_name}/images/* |wc -l)
 if [ $nimgs -ne 0 ]; then
   cd ${STORMroot}/plot/${tc_name}/images
-  convert ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.png ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.png AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
+  convert ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
   rm -f *.png
-
+  
   if [ "$SENDCOM" = 'YES' ]; then
-    cp ${STORMroot}/plot/${tc_name}/images/ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutroot}/evs.hurricane_regional.abswind_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutroot}/evs.hurricane_regional.wind_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png 
-    cp ${STORMroot}/plot/${tc_name}/images/ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutroot}/evs.hurricane_regional.abstk_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutroot}/evs.hurricane_regional.altk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutroot}/evs.hurricane_regional.crtk_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
   fi
 fi
 
@@ -158,19 +160,20 @@ python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_average.py
 bimgs=$(ls ${metTCcomout}/plot/${tc_name}/images/* |wc -l)
 if [ $bimgs -ne 0 ]; then
   cd ${metTCcomout}/plot/${tc_name}/images
-  convert ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.png ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.png AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
-  convert CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.png CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif
+  convert ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
   rm -f *.png
-
   if [ "$SENDCOM" = 'YES' ]; then
-    cp -r ${metTCcomout}/plot/${tc_name}/images/ABSAMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutbas}/evs.hurricane_regional.abswind_err.${stormBasin}.${stormYear}.season.png
-    cp -r ${metTCcomout}/plot/${tc_name}/images/AMAX_WIND-BMAX_WIND_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutbas}/evs.hurricane_regional.wind_bias.${stormBasin}.${stormYear}.season.png
-    cp -r ${metTCcomout}/plot/${tc_name}/images/ABSTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutbas}/evs.hurricane_regional.abstk_err.${stormBasin}.${stormYear}.season.png
-    cp -r ${metTCcomout}/plot/${tc_name}/images/ALTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutbas}/evs.hurricane_regional.altk_bias.${stormBasin}.${stormYear}.season.png
-    cp -r ${metTCcomout}/plot/${tc_name}/images/CRTK_ERR_fhrmean_${tc_name}_${tropcyc_model_type}.gif ${comoutbas}/evs.hurricane_regional.crtk_bias.${stormBasin}.${stormYear}.season.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad34_err.${stormBasin}.${stormYear}.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad50_err.${stormBasin}.${stormYear}.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad64_err.${stormBasin}.${stormYear}.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad34_bias.${stormBasin}.${stormYear}.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad50_bias.${stormBasin}.${stormYear}.png
+    cp -r ${metTCcomout}/plot/${tc_name}/images/AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutbas}/evs.hurricane_regional.wind_rad64_bias.${stormBasin}.${stormYear}.png
   fi
 fi
 ### bas do loop end
