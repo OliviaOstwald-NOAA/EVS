@@ -74,10 +74,10 @@ export PLOTDATA=${STORMroot}
 #export RUN="windradii"
 export img_quality="low"
 export fhr_list="0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
-#export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
-export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS"
-#export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS,CTCX"
+#export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+#export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS"
+export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS,CTCX"
 export plot_CI_bars="NO"
 export under="_"
 export tc_name=${stbasin}${under}${stormYear}${under}${stormName}
@@ -90,21 +90,57 @@ python ${USHevs}/${COMPONENT}/plot_windradii_lead_average.py
 nimgs=$(ls ${STORMroot}/plot/${tc_name}/images/* |wc -l)
 if [ $nimgs -ne 0 ]; then
   cd ${STORMroot}/plot/${tc_name}/images
-  convert ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
-  convert ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
-  convert ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
-  convert AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.png AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif
-  convert AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.png AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif
-  convert AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.png AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ABSANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.png ABSANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.png ABSANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.png ABSANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.png ANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.png ANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.png ANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ABSASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.png ABSASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.png ABSASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.png ABSASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.png ASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.png ASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.png ASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ABSASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.png ABSASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.png ABSASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.png ABSASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.png ASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.png ASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.png ASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ABSANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.png ABSANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ABSANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.png ABSANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ABSANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.png ABSANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.gif
+  convert ANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.png ANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.gif
+  convert ANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.png ANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.gif
+  convert ANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.png ANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.gif
   rm -f *.png
   
   if [ "$SENDCOM" = 'YES' ]; then
-    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/ABSAAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_34-BAL_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_50-BAL_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/AAL_WIND_64-BAL_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_rad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NErad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SErad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASW_WIND_34-BSW_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASW_WIND_50-BSW_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ASW_WIND_64-BSW_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_SWrad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ABSANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANW_WIND_34-BNW_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANW_WIND_50-BNW_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANW_WIND_64-BNW_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_NWrad64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
   fi
 fi
 
@@ -113,6 +149,10 @@ fi
 fi
 ### num do loop end
 done
+
+#########################
+exit
+#########################
 
 #export COMINstats=/lfs/h2/emc/ptmp/$USER/com/evs/1.0/hurricane_regional/tropcyc/stats
 
