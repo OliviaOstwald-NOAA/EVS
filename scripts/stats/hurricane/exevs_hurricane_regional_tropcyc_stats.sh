@@ -7,8 +7,7 @@ export LEAD_List="-lead 000000 -lead 060000 -lead 120000 -lead 180000 -lead 2400
 
 export stormYear=${YYYY}
 export basinlist="al ep"
-export numlist="04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \                     
-	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  #removed 01, 02, 03 b/c no CTCX runs available and code will break. Plots already generated for these storms.
+export numlist="04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20"
 #export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \ 
 #	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  
 
@@ -82,15 +81,14 @@ grep "03, HFSA" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBa
 grep "03, HFSB" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HWRF" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, HMON" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 grep "03, CTCX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSA/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HFSB/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HWRF/03, MD03/' a${stormBasin}${stormNumber}${stormYear}.dat
 sed -i 's/03, HMON/03, MD04/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, AVNO/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
-sed -i 's/03, CTCX/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
-#export Model_List="MD01,MD02,MD03,MD04,MD05"
+sed -i 's/03, CTCX/03, MD05/' a${stormBasin}${stormNumber}${stormYear}.dat
+sed -i 's/03, AVNO/03, MD06/' a${stormBasin}${stormNumber}${stormYear}.dat
 export Model_List="MD01,MD02,MD03,MD04,MD05,MD06"
 #export Model_Plot="HFSA,HFSB,HWRF,HMON,AVNO,CTCX"
 
