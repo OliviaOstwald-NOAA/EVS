@@ -118,58 +118,58 @@ class Presets():
         self.date_presets = {
             'LAST90DAYS': {
                 'valid_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=90)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=89)
                 ).strftime('%Y%m%d'),
                 'valid_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d'),
                 'init_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=90)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=89)
                     ).strftime('%Y%m%d'),
                 'init_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d')
             },
             'LAST31DAYS': {
                 'valid_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=31)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                 ).strftime('%Y%m%d'),
                 'valid_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d'),
                 'init_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=31)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                     ).strftime('%Y%m%d'),
                 'init_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d')
             },
             'last90days': {
                 'valid_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=90)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=89)
                 ).strftime('%Y%m%d'),
                 'valid_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d'),
                 'init_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=90)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=89)
                     ).strftime('%Y%m%d'),
                 'init_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d')
             },
             'last31days': {
                 'valid_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=31)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                 ).strftime('%Y%m%d'),
                 'valid_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d'),
                 'init_beg': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=31)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                     ).strftime('%Y%m%d'),
                 'init_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d')
             },
             'LAST30DAYS': {
@@ -177,13 +177,13 @@ class Presets():
                     datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                 ).strftime('%Y%m%d'),
                 'valid_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d'),
                 'init_beg': (
                     datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=30)
                     ).strftime('%Y%m%d'),
                 'init_end': (
-                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=1)
+                    datetime.strptime(os.environ['VDATE'], '%Y%m%d')-td(days=0)
                 ).strftime('%Y%m%d')
             },
             'LAST7DAYS': {
@@ -3814,7 +3814,7 @@ class Reference():
                                                            + ' >=0.3048,'),
                                     'obs_var_options': '',
                                     'plot_group':'precip'},
-                        'SNOD_06': {'fcst_var_names': ['SNOD', 'ASNOW', 'SNOD_06', 'ASNOW_06'],
+                        'SNOD_06': {'fcst_var_names': ['SNOD', 'SNOD_06'],
                                     'fcst_var_levels': ['Z0','A06','A6'],
                                     'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
                                                             + ' >=0.1016,'
@@ -3829,7 +3829,37 @@ class Reference():
                                                            + ' >=0.3048,'),
                                     'obs_var_options': '',
                                     'plot_group':'precip'},
-                        'SNOD_24': {'fcst_var_names': ['SNOD', 'ASNOW', 'SNOD_24', 'ASNOW_24'],
+                        'SNOD_24': {'fcst_var_names': ['SNOD', 'SNOD_24'],
+                                    'fcst_var_levels': ['Z0','A24'],
+                                    'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                            + ' >=0.1016,'
+                                                            + ' >=0.2032,'
+                                                            + ' >=0.3048,'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['ASNOW', 'ASNOW_24'],
+                                    'obs_var_levels': ['A24'],
+                                    'obs_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                           + ' >=0.1016,'
+                                                           + ' >=0.2032,'
+                                                           + ' >=0.3048,'),
+                                    'obs_var_options': '',
+                                    'plot_group':'precip'},
+                        'ASNOW_06': {'fcst_var_names': ['ASNOW', 'ASNOW_06'],
+                                    'fcst_var_levels': ['Z0','A06','A6'],
+                                    'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                            + ' >=0.1016,'
+                                                            + ' >=0.2032,'
+                                                            + ' >=0.3048,'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['ASNOW', 'ASNOW_06'],
+                                    'obs_var_levels': ['A06','A6'],
+                                    'obs_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                           + ' >=0.1016,'
+                                                           + ' >=0.2032,'
+                                                           + ' >=0.3048,'),
+                                    'obs_var_options': '',
+                                    'plot_group':'precip'},
+                        'ASNOW_24': {'fcst_var_names': ['ASNOW', 'ASNOW_24'],
                                     'fcst_var_levels': ['Z0','A24'],
                                     'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
                                                             + ' >=0.1016,'
@@ -3887,7 +3917,7 @@ class Reference():
                                                            + ' >=0.3048,'),
                                     'obs_var_options': '',
                                     'plot_group':'precip'},
-                        'SNOD_06': {'fcst_var_names': ['SNOD', 'ASNOW', 'SNOD_06', 'ASNOW_06'],
+                        'SNOD_06': {'fcst_var_names': ['SNOD', 'SNOD_06'],
                                     'fcst_var_levels': ['Z0','A06','A6'],
                                     'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
                                                             + ' >=0.1016,'
@@ -3902,7 +3932,37 @@ class Reference():
                                                            + ' >=0.3048,'),
                                     'obs_var_options': '',
                                     'plot_group':'precip'},
-                        'SNOD_24': {'fcst_var_names': ['SNOD', 'ASNOW', 'SNOD_24', 'ASNOW_24'],
+                        'SNOD_24': {'fcst_var_names': ['SNOD', 'SNOD_24'],
+                                    'fcst_var_levels': ['Z0','A24'],
+                                    'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                            + ' >=0.1016,'
+                                                            + ' >=0.2032,'
+                                                            + ' >=0.3048,'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['ASNOW', 'ASNOW_24'],
+                                    'obs_var_levels': ['A24'],
+                                    'obs_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                           + ' >=0.1016,'
+                                                           + ' >=0.2032,'
+                                                           + ' >=0.3048,'),
+                                    'obs_var_options': '',
+                                    'plot_group':'precip'},
+                        'ASNOW_06': {'fcst_var_names': ['ASNOW', 'ASNOW_06'],
+                                    'fcst_var_levels': ['Z0','A06','A6'],
+                                    'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                            + ' >=0.1016,'
+                                                            + ' >=0.2032,'
+                                                            + ' >=0.3048,'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['ASNOW', 'ASNOW_06'],
+                                    'obs_var_levels': ['A06','A6'],
+                                    'obs_var_thresholds': ('>=0.0254, >=0.0508,'
+                                                           + ' >=0.1016,'
+                                                           + ' >=0.2032,'
+                                                           + ' >=0.3048,'),
+                                    'obs_var_options': '',
+                                    'plot_group':'precip'},
+                        'ASNOW_24': {'fcst_var_names': ['ASNOW', 'ASNOW_24'],
                                     'fcst_var_levels': ['Z0','A24'],
                                     'fcst_var_thresholds': ('>=0.0254, >=0.0508,'
                                                             + ' >=0.1016,'
