@@ -5,7 +5,7 @@
 #PBS -q dev
 #PBS -l select=1:ncpus=2:mem=4GB
 ##PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1
-#PBS -l walltime=00:30:00
+#PBS -l walltime=01:30:00
 #PBS -l debug=true
 
 set -x
@@ -39,10 +39,10 @@ source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 export PDY=20201231
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/evs-data/syndat_tcvitals.2020
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/evs-data/tracks.atcfunix.20
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/evs-data/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/evs-data/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/syndat_tcvitals.2020
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/tracks.atcfunix.20
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gfsv17/bdeck
 #export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/syndat_tcvitals.2020
 #export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/tracks.atcfunix.20
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2020/bdeck

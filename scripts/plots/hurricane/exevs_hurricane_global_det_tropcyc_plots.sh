@@ -3,7 +3,8 @@ set -x
 export PS4=' + exevs_hurricane_global_det_tropcyc_plots.sh line $LINENO: '
 
 export stormYear=${YYYY}
-export basinlist="al ep wp"
+export basinlist="al"
+#export basinlist="al ep wp"
 export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
 	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
 
@@ -74,10 +75,11 @@ export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
 
-export fhr_list="0,12,24,36,48,60,72"
-#export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
-export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1"
+#export fhr_list="0,12,24,36,48,60,72,84"
+export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+export model_plot_name_list="V16R,HR4,HR3a,HR3b,HR2,HR1"
+#export model_plot_name_list="V16R,HR4,HR3a,HR3b"
 #export model_plot_name_list="GFS,ECMWF,CMC,HR3a"
 export plot_CI_bars="NO"
 export under="_"
@@ -143,10 +145,11 @@ export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
 
-export fhr_list="0,12,24,36,48,60,72"
-#export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
-export model_plot_name_list="V16R,HR3a,HR3b,HR2,HR1"
+#export fhr_list="0,12,24,36,48,60,72,84"
+export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+export model_plot_name_list="V16R,HR4,HR3a,HR3b,HR2,HR1"
+#export model_plot_name_list="V16R,HR4,HR3a,HR3b"
 #export model_plot_name_list="GFS,ECMWF,CMC,HR3a"
 export plot_CI_bars="NO"
 export stormNameB=Basin
