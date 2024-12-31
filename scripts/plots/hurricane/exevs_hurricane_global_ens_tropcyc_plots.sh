@@ -68,6 +68,13 @@ stormName=$(sed "s/ //g" <<< $VARIABLE2)
 echo "Name_${stormName}_Name"
 echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 
+### NOTE TO USERS ###
+# UKM runs from 2024 are still being processed  #
+# The code will break if this model is included #
+# To run with UKM: 
+# comment out lines 85 and 86 #
+# uncomment lines 87 and 88   #
+
 #---Storm Plots 
 export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${STORMroot}
@@ -136,6 +143,13 @@ elif [ ${stormBasin} = "wp" ]; then
   cp -r ${COMINstats}/WestPacific/tc_stat .
   cp $metTCcomout/tc_stat/tc_stat_basin.out $metTCcomout/tc_stat/tc_stat.out
 fi
+
+### NOTE TO USERS ###
+# UKM runs from 2024 are still being processed  #
+# The code will break if this model is included #
+# To run with UKM: 
+# comment out lines 161 and 162 #
+# uncomment lines 163 and 164   #
 
 #--- Basin-Storms Plots 
 export LOGOroot=${FIXevs}/logos
