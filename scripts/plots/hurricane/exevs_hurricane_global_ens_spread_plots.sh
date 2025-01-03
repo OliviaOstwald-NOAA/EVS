@@ -124,7 +124,6 @@ cd $STORMdata
 
 python ${USHevs}/${COMPONENT}/plot_spread_lead_average.py
 
-#/lfs/h2/emc/ptmp/jiayi.peng/metTC/wp02/plot/WP_2022_MALAKAS/images
 nimgs=$(ls ${STORMroot}/plot/${tc_name}/images/* |wc -l)
 if [ $nimgs -ne 0 ]; then
   cd ${STORMroot}/plot/${tc_name}/images
