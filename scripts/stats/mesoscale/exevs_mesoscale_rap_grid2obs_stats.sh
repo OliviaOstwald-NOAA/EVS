@@ -24,7 +24,7 @@ set -x
  
 # Set env  
   export OBSDIR=OBS
-  export fcstmax=48
+  export fcstmax=51
   
   export model1=`echo $MODELNAME | tr a-z A-Z`
   export model0=`echo $MODELNAME | tr A-Z a-z`
@@ -58,7 +58,7 @@ echo "*****************************"
       # Check for restart files reformat
         echo " Check for restart files reformat begin"
         if [ $evs_run_mode = production ]; then
-           ${USHevs}/mesoscale/mesoscale_stats_g2o_production_restart.sh
+	   ${USHevs}/mesoscale/mesoscale_stats_g2o_production_restart.sh
 	   export err=$?; err_chk
         fi
         echo " Check for restart files reformat done"
@@ -76,6 +76,10 @@ echo "*****************************"
          # Create Output Directories	    
            python $USHevs/mesoscale/mesoscale_create_output_dirs.py
            export err=$?; err_chk
+
+	 # Preprocess Prepbufr Data
+	   python $USHevs/mesoscale/mesoscale_stats_grid2obs_preprocess_prepbufr.py
+	   export err=$?; err_chk
            
          # Create Reformat Job Script
            python $USHevs/mesoscale/mesoscale_stats_grid2obs_create_job_script.py
@@ -94,6 +98,10 @@ echo "*****************************"
      python $USHevs/mesoscale/mesoscale_stats_grid2obs_create_poe_job_scripts.py
      export err=$?; err_chk
   fi
+
+# Create Reformat Working Directories
+  python $USHevs/mesoscale/mesoscale_create_child_workdirs.py
+  export err=$?; err_chk
 
 echo "*****************************"
 echo "Reformat jobs begin"
@@ -129,6 +137,12 @@ echo "*****************************"
         nc=$((nc+1))
      done
   fi
+
+# Copy Reformat Output to Main Directory
+  for CHILD_DIR in ${DATA}/${VERIF_CASE}/METplus_output/workdirs/${job_type}/*; do
+    cp -ru $CHILD_DIR/* ${DATA}/${VERIF_CASE}/METplus_output/.
+    export err=$?; err_chk
+  done
 
 echo "*****************************"
 echo "Reformat jobs done"
@@ -177,6 +191,10 @@ echo "*****************************"
      export err=$?; err_chk
   fi
 
+# Create Generate Working Directories
+  python $USHevs/mesoscale/mesoscale_create_child_workdirs.py
+  export err=$?; err_chk
+
 echo "*****************************"
 echo "Generate jobs begin"
 echo "*****************************"
@@ -212,6 +230,12 @@ echo "*****************************"
      done
   fi
 
+# Copy Generate Output to Main Directory
+  for CHILD_DIR in ${DATA}/${VERIF_CASE}/METplus_output/workdirs/${job_type}/*; do
+    cp -ru $CHILD_DIR/* ${DATA}/${VERIF_CASE}/METplus_output/.
+    export err=$?; err_chk
+  done
+
 echo "*****************************"
 echo "Generate jobs done"
 echo "*****************************"
@@ -243,6 +267,10 @@ echo "*****************************"
      python $USHevs/mesoscale/mesoscale_stats_grid2obs_create_poe_job_scripts.py
      export err=$?; err_chk
   fi
+
+# Create Gather Working Directories
+  python $USHevs/mesoscale/mesoscale_create_child_workdirs.py
+  export err=$?; err_chk
 
 echo "*****************************"
 echo "Gather jobs begin"
@@ -279,24 +307,27 @@ echo "*****************************"
      done
   fi
 
+# Copy Gather Output to Main Directory
+  for CHILD_DIR in ${DATA}/${VERIF_CASE}/METplus_output/workdirs/${job_type}/*; do
+    cp -ru $CHILD_DIR/* ${DATA}/${VERIF_CASE}/METplus_output/.
+    export err=$?; err_chk
+  done
+
 echo "*****************************"
 echo "Gather jobs done"
 echo "*****************************"
 
-# Copy stat output files to EVS COMOUTsmall directory
-  if [ $SENDCOM = YES ]; then
-     for VERIF_TYPE in $VERIF_TYPES;do
-        for MODEL_DIR_PATH in $MET_PLUS_OUT/$VERIF_TYPE/point_stat/$MODELNAME*; do
-           if [ -d $MODEL_DIR_PATH ]; then
-              MODEL_DIR=$(echo ${MODEL_DIR_PATH##*/})
-              mkdir -p $COMOUTsmall
-              for FILE in $MODEL_DIR_PATH/*; do
-                 cp -v $FILE $COMOUTsmall/.
-              done
+# Copy "gather" output files to EVS COMOUTsmall directory
+if [ $SENDCOM = YES ]; then
+  for MODEL_DIR_PATH in $MET_PLUS_OUT/gather_small/stat_analysis/$MODELNAME*; do
+     for FILE in $MODEL_DIR_PATH/*; do
+           if [ -s "$FILE" ]; then
+               cp -v $FILE $COMOUTsmall/gather_small/.
            fi
-        done
-    done
-  fi
+     done
+  done
+fi
+ 
 
 echo "*****************************"
 echo "Gather3 jobs begin"
@@ -311,7 +342,7 @@ echo "*****************************"
 # Create Output Directories
   python $USHevs/mesoscale/mesoscale_create_output_dirs.py
   export err=$?; err_chk
-  
+
 # Create Gather 3 Job Script
   python $USHevs/mesoscale/mesoscale_stats_grid2obs_create_job_script.py
   export err=$?; err_chk
@@ -323,6 +354,10 @@ echo "*****************************"
      python $USHevs/mesoscale/mesoscale_stats_grid2obs_create_poe_job_scripts.py
      export err=$?; err_chk
   fi
+ 
+# Create Gather 3 Working Directories
+  python $USHevs/mesoscale/mesoscale_create_child_workdirs.py
+  export err=$?; err_chk
   
 # Run All RAP grid2obs/stats Gather 3 Jobs
   chmod u+x ${DATA}/${VERIF_CASE}/${STEP}/METplus_job_scripts/${job_type}/*
@@ -359,21 +394,23 @@ echo "*****************************"
 echo "Gather3 jobs done"
 echo "*****************************"
 
-# Copy output files into the correct EVS COMOUT directory
-  if [ $SENDCOM = YES ]; then
-     for MODEL_DIR_PATH in $MET_PLUS_OUT/gather_small/stat_analysis/$MODELNAME*; do
-        MODEL_DIR=$(echo ${MODEL_DIR_PATH##*/})
-        mkdir -p $COMOUT/$MODEL_DIR
-        for FILE in $MODEL_DIR_PATH/*; do
-           if [ -s $FILE ]; then
-              cp -v $FILE $COMOUT/$MODEL_DIR/.
-	   fi
-        done
-     done
-   fi
+# Copy Gather 3 Output to Main Directory
+  for CHILD_DIR in ${DATA}/${VERIF_CASE}/METplus_output/workdirs/${job_type}/*; do
+     cp -ru $CHILD_DIR/* ${DATA}/${VERIF_CASE}/METplus_output/.
+     export err=$?; err_chk
+  done
+
+# Copy "gather" output files to EVS COMOUTsmall directory
+if [ $SENDCOM = YES ]; then
+   for MODEL_DIR_PATH in $MET_PLUS_OUT/gather_small/stat_analysis/$MODELNAME*; do
+      for FILE in $MODEL_DIR_PATH/*; do
+          if [ -s "$FILE" ]; then
+              cp -v $FILE $COMOUTsmall/gather_small/.
+          fi
+      done
+   done
+fi
+
 
 echo "******************************"
-echo "Begin to print METplus Log files "
-  cat $DATA/grid2obs/METplus_output/*/*/pb2nc/logs/*
-echo "End to print METplus Log files "
 

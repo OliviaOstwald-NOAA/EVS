@@ -73,7 +73,6 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
-
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
 export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
 export model_plot_name_list="GEFS,EENS,CENS,UKMN"
@@ -85,7 +84,6 @@ export tc_num=${stormNumber}
 export tropcyc_model_type="global"
 python ${USHevs}/${COMPONENT}/plot_tropcyc_lead_average.py
 
-#/lfs/h2/emc/ptmp/jiayi.peng/metTC/wp02/plot/WP_2022_MALAKAS/images
 nimgs=$(ls ${STORMroot}/plot/${tc_name}/images/* |wc -l)
 if [ $nimgs -ne 0 ]; then
   cd ${STORMroot}/plot/${tc_name}/images
@@ -140,7 +138,6 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
-
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
 export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
 export model_plot_name_list="GEFS,EENS,CENS,UKMN"
