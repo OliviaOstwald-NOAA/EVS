@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=00:20:00
+#PBS -l walltime=00:30:00
 #PBS -l place=vscatter,select=1:ncpus=31:ompthreads=1:mem=35GB
 #PBS -l debug=true
 
@@ -33,7 +33,7 @@ export machine=WCOSS2
 export USE_CFP=YES
 export nproc=31
 
-export MAILTO='alicia.bentley@noaa.gov,mallory.row@noaa.gov'
+export MAILTO='alicia.bentley@noaa.gov,qi.shi@noaa.gov'
 
 export envir=prod
 export NET=evs

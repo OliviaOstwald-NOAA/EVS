@@ -109,21 +109,6 @@ export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
 export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
-elif [ ${RUN} = "regional_early" -a ${VERIF_CASE} = "tropcyc" ]; then
-export YYYY=`echo ${PDY} | cut -c1-4`
-export YY24=`echo ${PDY} | cut -c3-4`
-export COMINvit=${COMINvit:-/your/TC/vitals/file}
-export COMINtrack=${COMINtrack:-your/TC/track/file}
-export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
-export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
-
-elif [ ${RUN} = "regional_late" -a ${VERIF_CASE} = "tropcyc" ]; then
-export YYYY=`echo ${PDY} | cut -c1-4`
-export YY24=`echo ${PDY} | cut -c3-4`
-export COMINvit=${COMINvit:-/your/TC/vitals/file}
-export COMINtrack=${COMINtrack:-your/TC/track/file}
-export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
-export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 else
 echo "Job failed: unknown ${RUN} and ${VERIF_CASE}"

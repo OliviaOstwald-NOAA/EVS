@@ -36,6 +36,7 @@ valid_hr_start = os.environ['valid_hr_start']
 valid_hr_end = os.environ['valid_hr_end']
 valid_hr_inc = os.environ['valid_hr_inc']
 fhr_end = os.environ['fhr_list'].split(',')[-1]
+job_num_work_dir = os.environ['job_num_work_dir']
 
 # Process run time arguments
 if len(sys.argv) != 4:
@@ -63,12 +64,9 @@ MET_MPR_column_list = [
     'VX_MASK', 'INTERP_MTHD', 'INTERP_PNTS', 'FCST_THRESH', 'OBS_THRESH',
     'COV_THRESH', 'ALPHA', 'LINE_TYPE', 'TOTAL', 'INDEX', 'OBS_SID',
     'OBS_LAT', 'OBS_LON', 'OBS_LVL', 'OBS_ELV', 'FCST', 'OBS', 'OBS_QC',
-    'CLIMO_MEAN', 'CLIMO_STDEV', 'CLIMO_CDF'
+    'OBS_CLIMO_MEAN', 'OBS_CLIMO_STDEV', 'OBS_CLIMO_CDF',
+    'FCST_CLIMO_MEAN', 'FCST_CLIMO_STDEV'
 ]
-
-# Set input and output directories
-output_dir = os.path.join(DATA, VERIF_CASE+'_'+STEP, 'METplus_output',
-                          RUN+'.'+DATE, MODEL, VERIF_CASE)
 
 # Create Days 6-10 average files
 print("\nCreating Days 6-10 average files")
@@ -83,29 +81,38 @@ while valid_hr <= int(valid_hr_end):
     days_avg_day_start = 10
     days_avg_day = days_avg_day_start
     while days_avg_day <= days_avg_day_end:
+        full_path_job_num_work_dir = os.path.join(
+            job_num_work_dir, RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
+        full_path_DATA = os.path.join(
+            DATA, VERIF_CASE+'_'+STEP, 'METplus_output',
+            RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
+        full_path_COMOUT = os.path.join(
+            COMOUT, RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
         days_avg_file_list = []
         days_avg_day_fhr_end = days_avg_day * 24
         days_avg_day_fhr_start = days_avg_day_fhr_end - 120
         days_avg_day_init = (days_avg_valid_end
                              - datetime.timedelta(days=days_avg_day))
         days_avg_day_fhr = days_avg_day_fhr_start
-        output_DATA_file = os.path.join(output_dir, 'days6_10_avg_'
-                                        +VERIF_TYPE+'_'+job_name+'_init'
-                                        +days_avg_day_init.strftime('%Y%m%d%H')
-                                        +'_valid'
-                                        +days_avg_valid_start\
-                                        .strftime('%Y%m%d%H')+'to'
-                                        +days_avg_valid_end\
-                                        .strftime('%Y%m%d%H')+'.stat')
-        output_COMOUT_file = os.path.join(COMOUT, RUN+'.'+DATE, MODEL,
-                                          VERIF_CASE, 'days6_10_avg_'
-                                          +VERIF_TYPE+'_'+job_name+'_init'
-                                          +days_avg_day_init.strftime('%Y%m%d%H')
-                                          +'_valid'
-                                          +days_avg_valid_start\
-                                          .strftime('%Y%m%d%H')+'to'
-                                          +days_avg_valid_end\
-                                          .strftime('%Y%m%d%H')+'.stat')
+        # Set output file
+        output_file = os.path.join(full_path_job_num_work_dir, 
+                                   'days6_10_avg_'
+                                   +VERIF_TYPE+'_'+job_name+'_init'
+                                   +days_avg_day_init.strftime('%Y%m%d%H')
+                                   +'_valid'
+                                   +days_avg_valid_start\
+                                   .strftime('%Y%m%d%H')+'to'
+                                   +days_avg_valid_end\
+                                   .strftime('%Y%m%d%H')+'.stat')
+        output_DATA_file = os.path.join(
+            full_path_DATA, output_file.rpartition('/')[2]
+        )
+        output_COMOUT_file = os.path.join(
+            full_path_COMOUT, output_file.rpartition('/')[2]
+        )
         while days_avg_day_fhr <= days_avg_day_fhr_end:
             days_avg_day_fhr_valid = (
                 days_avg_day_init
@@ -147,23 +154,14 @@ while valid_hr <= int(valid_hr_end):
             make_days_avg_output_file = False
         else:
             if len(days_avg_file_list) >= 9:
-                if not os.path.exists(output_DATA_file):
-                    make_days_avg_output_file = True
-                else:
-                    make_days_avg_output_file = False
-                    print(f"DATA Output File exist: {output_DATA_file}")
-                    if SENDCOM == 'YES' \
-                            and sub_util.check_file_exists_size(
-                                output_DATA_file
-                            ):
-                        sub_util.copy_file(output_DATA_file,
-                                           output_COMOUT_file)
+                make_days_avg_output_file = True
             else:
                 print("WARNING: Need at least 9 files to create Days 6-10 average")
                 make_days_avg_output_file = False
         if make_days_avg_output_file:
-            print(f"DATA Output File: {output_DATA_file}")
-            print(f"COMOUT Output File: {output_COMOUT_file}")
+            print(f"Output File: {output_file}")
+            if not os.path.exists(full_path_job_num_work_dir):
+                os.makedirs(full_path_job_num_work_dir)
             all_days_avg_df = pd.DataFrame(columns=MET_MPR_column_list)
             for days_avg_file in days_avg_file_list:
                 with open(days_avg_file, 'r') as infile:
@@ -210,7 +208,13 @@ while valid_hr <= int(valid_hr_end):
                         if job_name == 'Days6_10Avg_Temp2m':
                             all_days_avg_obtype_sid_vx_mask_climo_mean = (
                                 np.array(
-                                    all_days_avg_obtype_sid_vx_mask_df['CLIMO_MEAN']\
+                                    all_days_avg_obtype_sid_vx_mask_df['OBS_CLIMO_MEAN']\
+                                    .values, dtype=float
+                                ).mean()
+                            )
+                            all_days_avg_obtype_sid_vx_mask_fclimo_mean = (
+                                np.array(
+                                    all_days_avg_obtype_sid_vx_mask_df['FCST_CLIMO_MEAN']\
                                     .values, dtype=float
                                 ).mean()
                             )
@@ -248,8 +252,11 @@ while valid_hr <= int(valid_hr_end):
                             all_days_avg_obtype_sid_vx_mask_obs_mean
                         )
                         if job_name == 'Days6_10Avg_Temp2m':
-                            days_avg_obtype_sid_vx_mask_df['CLIMO_MEAN'] = str(
+                            days_avg_obtype_sid_vx_mask_df['OBS_CLIMO_MEAN'] = str(
                                 all_days_avg_obtype_sid_vx_mask_climo_mean
+                            )
+                            days_avg_obtype_sid_vx_mask_df['FCST_CLIMO_MEAN'] = str(
+                                all_days_avg_obtype_sid_vx_mask_fclimo_mean
                             )
                         days_avg_df_list.append(
                             days_avg_obtype_sid_vx_mask_df
@@ -258,12 +265,12 @@ while valid_hr <= int(valid_hr_end):
                 days_avg_df_list, axis=1, ignore_index=True
             ).T
             days_avg_df.to_csv(
-                output_DATA_file, header=input_file_header,
+                output_file, header=input_file_header,
                 index=None, sep=' ', mode='w'
             )
             if SENDCOM == 'YES' \
-                    and sub_util.check_file_exists_size(output_DATA_file):
-                sub_util.copy_file(output_DATA_file, output_COMOUT_file)
+                    and sub_util.check_file_exists_size(output_file):
+                sub_util.copy_file(output_file, output_COMOUT_file)
         print("")
         days_avg_day+=1
     valid_hr+=int(valid_hr_inc)

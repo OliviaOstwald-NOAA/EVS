@@ -36,6 +36,7 @@ valid_hr_start = os.environ['valid_hr_start']
 valid_hr_end = os.environ['valid_hr_end']
 valid_hr_inc = os.environ['valid_hr_inc']
 fhr_end = os.environ['fhr_list'].split(',')[-1]
+job_num_work_dir = os.environ['job_num_work_dir']
 
 # Process run time arguments
 if len(sys.argv) != 4:
@@ -63,12 +64,9 @@ MET_MPR_column_list = [
     'VX_MASK', 'INTERP_MTHD', 'INTERP_PNTS', 'FCST_THRESH', 'OBS_THRESH',
     'COV_THRESH', 'ALPHA', 'LINE_TYPE', 'TOTAL', 'INDEX', 'OBS_SID',
     'OBS_LAT', 'OBS_LON', 'OBS_LVL', 'OBS_ELV', 'FCST', 'OBS', 'OBS_QC',
-    'CLIMO_MEAN', 'CLIMO_STDEV', 'CLIMO_CDF'
+    'OBS_CLIMO_MEAN', 'OBS_CLIMO_STDEV', 'OBS_CLIMO_CDF',
+    'FCST_CLIMO_MEAN', 'FCST_CLIMO_STDEV'
 ]
-
-# Set input and output directories
-output_dir = os.path.join(DATA, VERIF_CASE+'_'+STEP, 'METplus_output',
-                          RUN+'.'+DATE, MODEL, VERIF_CASE)
 
 # Create Weeks 3-4 average files
 print("\nCreating Weeks 3-4 average files")
@@ -83,29 +81,38 @@ while valid_hr <= int(valid_hr_end):
     weeks_avg_day_start = 28
     weeks_avg_day = weeks_avg_day_start
     while weeks_avg_day <= weeks_avg_day_end:
+        full_path_job_num_work_dir = os.path.join(
+            job_num_work_dir, RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
+        full_path_DATA = os.path.join(
+            DATA, VERIF_CASE+'_'+STEP, 'METplus_output',
+            RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
+        full_path_COMOUT = os.path.join(
+            COMOUT, RUN+'.'+DATE, MODEL, VERIF_CASE
+        )
         weeks_avg_file_list = []
         weeks_avg_day_fhr_end = weeks_avg_day * 24
         weeks_avg_day_fhr_start = weeks_avg_day_fhr_end - 336
         weeks_avg_day_init = (weeks_avg_valid_end
                               - datetime.timedelta(days=weeks_avg_day))
         weeks_avg_day_fhr = weeks_avg_day_fhr_start
-        output_DATA_file = os.path.join(output_dir, 'weeks3_4_avg_'
-                                        +VERIF_TYPE+'_'+job_name+'_init'
-                                        +weeks_avg_day_init.strftime('%Y%m%d%H')
-                                        +'_valid'
-                                        +weeks_avg_valid_start\
-                                        .strftime('%Y%m%d%H')+'to'
-                                        +weeks_avg_valid_end\
-                                        .strftime('%Y%m%d%H')+'.stat')
-        output_COMOUT_file = os.path.join(COMOUT, RUN+'.'+DATE, MODEL,
-                                          VERIF_CASE, 'weeks3_4_avg_'
-                                          +VERIF_TYPE+'_'+job_name+'_init'
-                                          +weeks_avg_day_init.strftime('%Y%m%d%H')
-                                          +'_valid'
-                                          +weeks_avg_valid_start\
-                                          .strftime('%Y%m%d%H')+'to'
-                                          +weeks_avg_valid_end\
-                                          .strftime('%Y%m%d%H')+'.stat')
+        # Set output file
+        output_file = os.path.join(full_path_job_num_work_dir, 
+                                   'weeks3_4_avg_'
+                                   +VERIF_TYPE+'_'+job_name+'_init'
+                                   +weeks_avg_day_init.strftime('%Y%m%d%H')
+                                   +'_valid'
+                                   +weeks_avg_valid_start\
+                                   .strftime('%Y%m%d%H')+'to'
+                                   +weeks_avg_valid_end\
+                                   .strftime('%Y%m%d%H')+'.stat')
+        output_DATA_file = os.path.join(
+            full_path_DATA, output_file.rpartition('/')[2]
+        )
+        output_COMOUT_file = os.path.join(
+            full_path_COMOUT, output_file.rpartition('/')[2]
+        )
         while weeks_avg_day_fhr <= weeks_avg_day_fhr_end:
             weeks_avg_day_fhr_valid = (
                 weeks_avg_day_init
@@ -147,23 +154,14 @@ while valid_hr <= int(valid_hr_end):
             make_weeks_avg_output_file = False
         else:
             if len(weeks_avg_file_list) >= 23:
-                if not os.path.exists(output_DATA_file):
-                    make_weeks_avg_output_file = True
-                else:
-                    make_weeks_avg_output_file = False
-                    print(f"DATA Output File exist: {output_DATA_file}")
-                    if SENDCOM == 'YES' \
-                            and sub_util.check_file_exists_size(
-                                output_DATA_file
-                            ):
-                        sub_util.copy_file(output_DATA_file,
-                                           output_COMOUT_file)
+                make_weeks_avg_output_file = True
             else:
                 print("WARNING: Need at least 23 files to create Weeks 3-4 average")
                 make_weeks_avg_output_file = False
         if make_weeks_avg_output_file:
-            print(f"DATA Output File: {output_DATA_file}")
-            print(f"COMOUT Output File: {output_COMOUT_file}")
+            print(f"Output File: {output_file}")
+            if not os.path.exists(full_path_job_num_work_dir):
+                os.makedirs(full_path_job_num_work_dir)
             all_weeks_avg_df = pd.DataFrame(columns=MET_MPR_column_list)
             for weeks_avg_file in weeks_avg_file_list:
                 with open(weeks_avg_file, 'r') as infile:
@@ -210,7 +208,13 @@ while valid_hr <= int(valid_hr_end):
                         if job_name == 'Weeks3_4Avg_Temp2m':
                             all_weeks_avg_obtype_sid_vx_mask_climo_mean = (
                                 np.array(
-                                    all_weeks_avg_obtype_sid_vx_mask_df['CLIMO_MEAN']\
+                                    all_weeks_avg_obtype_sid_vx_mask_df['OBS_CLIMO_MEAN']\
+                                    .values, dtype=float
+                                ).mean()
+                            )
+                            all_weeks_avg_obtype_sid_vx_mask_fclimo_mean = (
+                                np.array(
+                                    all_weeks_avg_obtype_sid_vx_mask_df['FCST_CLIMO_MEAN']\
                                     .values, dtype=float
                                 ).mean()
                             )
@@ -248,8 +252,11 @@ while valid_hr <= int(valid_hr_end):
                             all_weeks_avg_obtype_sid_vx_mask_obs_mean
                         )
                         if job_name == 'Weeks3_4Avg_Temp2m':
-                            weeks_avg_obtype_sid_vx_mask_df['CLIMO_MEAN'] = str(
+                            weeks_avg_obtype_sid_vx_mask_df['OBS_CLIMO_MEAN'] = str(
                                 all_weeks_avg_obtype_sid_vx_mask_climo_mean
+                            )
+                            weeks_avg_obtype_sid_vx_mask_df['FCST_CLIMO_MEAN'] = str(
+                                all_weeks_avg_obtype_sid_vx_mask_fclimo_mean
                             )
                         weeks_avg_df_list.append(
                             weeks_avg_obtype_sid_vx_mask_df
@@ -258,12 +265,12 @@ while valid_hr <= int(valid_hr_end):
                 weeks_avg_df_list, axis=1, ignore_index=True
             ).T
             weeks_avg_df.to_csv(
-                output_DATA_file, header=input_file_header,
+                output_file, header=input_file_header,
                 index=None, sep=' ', mode='w'
             )
             if SENDCOM == 'YES' \
-                    and sub_util.check_file_exists_size(output_DATA_file):
-                sub_util.copy_file(output_DATA_file, output_COMOUT_file)
+                    and sub_util.check_file_exists_size(output_file):
+                sub_util.copy_file(output_file, output_COMOUT_file)
         print("")
         weeks_avg_day+=1
     valid_hr+=int(valid_hr_inc)
