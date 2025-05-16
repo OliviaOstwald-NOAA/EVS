@@ -1,17 +1,14 @@
 #PBS -S /bin/bash
 #PBS -N jevs_hurricane_regional_windradii_plots
 #PBS -j oe
-#PBS -A ENSTRACK-DEV
+#PBS -A VERF-DEV
 #PBS -q dev
-#PBS -l select=1:ncpus=2:mem=4GB
+#PBS -l select=1:ncpus=1:mem=4GB
 ##PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1
 #PBS -l walltime=00:30:00
 #PBS -l debug=true
 
 set -x
-
-#%include <head.h>
-#%include <envir-p1.h>
 
 export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
 source ${HOMEevs}/versions/run.ver
@@ -41,12 +38,9 @@ export PDY=20241231
 export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMPONENT}/${RUN}/${VERIF_CASE}
 
 #Define TC-vital file, and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCvital/syndat_tcvitals.2024
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/bdeck
-#export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/syndat_tcvitals.2023
-#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
-#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2023/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
@@ -55,12 +49,4 @@ export FIXevs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/EVS_fix
 
 # CALL executable job script here
 $HOMEevs/jobs/JEVS_HURRICANE_PLOTS
-
-%include <tail.h>
-%manual
-######################################################################
-# Purpose: This job will generate the grid2obs statistics for the HRRR
-#          model and generate stat files.
-######################################################################
-%end
 
