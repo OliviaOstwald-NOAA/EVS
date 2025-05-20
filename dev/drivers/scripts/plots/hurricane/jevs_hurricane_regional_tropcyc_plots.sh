@@ -32,15 +32,15 @@ module reset
 source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 
 #Set PDY to override setpdy.sh called in the j-jobs
-export PDY=20241231
+export PDY=20251231
 
 #Define the directory for TC-stats file 
 export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMPONENT}/${RUN}/${VERIF_CASE}
 
 #Define TC-vital file, and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/syndat_tcvitals.2025
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
 
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
 export KEEPDATA=NO
