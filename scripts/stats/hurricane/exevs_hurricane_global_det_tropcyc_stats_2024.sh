@@ -78,12 +78,12 @@ echo "${stormBasin}, ${stormNumber}, ${stormYear}, ${stormName}"
 grep "${stbasin}, ${stormNumber}" ${COMINtrack} > tracks.atcfunix.${YY24}_${stormBasin}${stormNumber}
 grep "03, AVNO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} > a${stormBasin}${stormNumber}${stormYear}.dat
 ###---CHANGE MODEL ID BELOW ONCE DATA FILES ARE AVAILABLE---###
-grep "03, GFSO" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
-###---CHANGE NEEDED IN LINE ABOVE---###
+grep "03, XXXX" tracks.atcfunix.${YY24}_${stormBasin}${stormNumber} >> a${stormBasin}${stormNumber}${stormYear}.dat
+###-------^^^^--------###
 sed -i 's/03, AVNO/03, MD01/' a${stormBasin}${stormNumber}${stormYear}.dat
 ###---CHANGE MODEL ID BELOW ONCE DATA FILES ARE AVAILABLE---###
-sed -i 's/03, GFSO/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
-###---CHANGE NEEDED IN LINE ABOVE---###
+sed -i 's/03, XXXX/03, MD02/' a${stormBasin}${stormNumber}${stormYear}.dat
+###-----------^^^^----------###
 export Model_List="MD01,MD02"
 
 #---get the $startdate, $enddate[YYMMDDHH] from the best track file  
