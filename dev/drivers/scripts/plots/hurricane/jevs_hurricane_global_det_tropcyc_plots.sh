@@ -42,9 +42,9 @@ export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMP
 export FIXevs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/EVS_fix
 
 #Define TC-vital file, and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/syndat_tcvitals.2025
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/TCvital/syndat_tcvitals.2025
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d

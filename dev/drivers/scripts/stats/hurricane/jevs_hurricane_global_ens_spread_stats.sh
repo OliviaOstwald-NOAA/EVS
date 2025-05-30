@@ -35,10 +35,10 @@ source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 export PDY=20251231
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/syndat_tcvitals.2025
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/tracks.atcfunix.25
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2025/bdeck
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/TCvital/syndat_tcvitals.2025
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/globalTrack/tracks.atcfunix.25
+export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
+export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
