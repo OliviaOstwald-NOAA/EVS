@@ -4,8 +4,10 @@ export PS4=' + exevs_hurricane_global_det_tcgen_stats.sh line $LINENO: '
 
 export MetOnMachine=${MetOnMachine:-$MET_ROOT}
 export YEAR=${YYYY}
-export basinlist="al ep wp"
-export modellist="gfs ecmwf cmc"
+#export basinlist="al ep wp"
+export basinlist="al"
+#export modellist="gfs ecmwf cmc"
+export modellist="gfs"
 
 for basin in $basinlist; do
 ### basin do loop start
@@ -35,7 +37,7 @@ if [ ${basin} = "al" ]; then
   cp ${COMINbdeckNHC}/bal*.dat ${INPUT}/.  
   export BASIN_MASK="AL"
   grep "AL,  9" ${INPUT}/ALLgenesis_${YEAR} > ${INPUT}/genesis_${YEAR}
-  grep "HC,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
+  grep "TG,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
 elif [ ${basin} = "ep" ]; then
   cp ${COMINadeckNHC}/aep*.dat ${INPUT}/.
   cp ${COMINbdeckNHC}/bep*.dat ${INPUT}/.
@@ -74,6 +76,8 @@ sed -i "s|$SEARCH6|$BASIN_MASK|g" TCGen_template.conf
 
 run_metplus.py -c ${OUTPUT}/TCGen_template.conf
 export err=$?; err_chk
+
+cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test
 
 if [ "$SENDCOM" = 'YES' ]; then
   if [ ! -d ${COMOUT} ]; then mkdir -p ${COMOUT}; fi
