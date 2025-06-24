@@ -36,7 +36,7 @@ source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 export PDY=20241231
 
 #Define the directories of your TC genesis data and A/Bdeck files
-export COMINgenesis=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/TCgen
+export COMINgenesis=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2024/data-comparison/test5
 export COMINadeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 export COMINadeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
