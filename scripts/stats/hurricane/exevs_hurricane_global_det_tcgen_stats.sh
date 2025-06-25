@@ -36,6 +36,7 @@ if [ ${basin} = "al" ]; then
   export BASIN_MASK="AL"
   grep "AL,  9" ${INPUT}/ALLgenesis_${YEAR} > ${INPUT}/genesis_${YEAR}
   grep "HC,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
+  grep "TG,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
 elif [ ${basin} = "ep" ]; then
   cp ${COMINadeckNHC}/aep*.dat ${INPUT}/.
   cp ${COMINbdeckNHC}/bep*.dat ${INPUT}/.
