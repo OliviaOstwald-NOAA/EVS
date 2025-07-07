@@ -21,7 +21,7 @@ if [ ! -d ${OUTPUT} ]; then mkdir -p ${OUTPUT}; fi
 
 if [ ${model} = "gfs" ]; then
   cp ${COMINgenesis}/${model}_genesis_${YEAR} ${INPUT}/ALLgenesis_${YEAR}
-  export INIT_FREQ=6
+  export INIT_FREQ=12
 elif [ ${model} = "ecmwf" ]; then
   cp ${COMINgenesis}/${model}_genesis_${YEAR} ${INPUT}/ALLgenesis_${YEAR}
   export INIT_FREQ=12
@@ -35,7 +35,7 @@ if [ ${basin} = "al" ]; then
   cp ${COMINbdeckNHC}/bal*.dat ${INPUT}/.  
   export BASIN_MASK="AL"
   grep "AL,  9" ${INPUT}/ALLgenesis_${YEAR} > ${INPUT}/genesis_${YEAR}
-  grep "HC,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
+#  grep "HC,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
   grep "TG,"  ${INPUT}/ALLgenesis_${YEAR} >> ${INPUT}/genesis_${YEAR}
 elif [ ${basin} = "ep" ]; then
   cp ${COMINadeckNHC}/aep*.dat ${INPUT}/.
@@ -55,7 +55,7 @@ fi
 cd ${OUTPUT}
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCGen_template.conf .
 export VALID_FREQ=6
-export INIT_FREQ=6
+export INIT_FREQ=12
 
 export SEARCH0="METBASE_template"
 export SEARCH1="INPUT_BASE_template"
