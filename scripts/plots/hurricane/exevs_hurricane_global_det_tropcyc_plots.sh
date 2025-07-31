@@ -4,10 +4,10 @@ export PS4=' + exevs_hurricane_global_det_tropcyc_plots.sh line $LINENO: '
 
 export stormYear=${YYYY}
 #export basinlist="al ep wp"
-export basinlist="al"
+export basinlist="cp"
 #export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
 #	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
-export numlist="03"
+export numlist="01 02"
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -16,13 +16,17 @@ for num in $numlist; do
 
 export stormBasin=${bas}
 export stbasin=`echo ${stormBasin} | tr "[a-z]" "[A-Z]"`
-echo "${stbasin} upper case: AL/EP/WP"
+echo "${stbasin} upper case: AL/CP/EP/WP"
 export stormNumber=${num}
 
 if [ ${stormBasin} = "al" ]; then
   COMINbdeck=${COMINbdeckNHC}
   export comoutatl=${COMOUT}/Atlantic
   if [ ! -d ${comoutatl} ]; then mkdir -p ${comoutatl}; fi
+elif [ ${stormBasin} = "cp" ]; then
+  COMINbdeck=${COMINbdeckNHC}
+  export comoutcpa=${COMOUT}/CentralPacific
+  if [ ! -d ${comoutcpa} ]; then mkdir -p ${comoutcpa}; fi
 elif [ ${stormBasin} = "ep" ]; then
   COMINbdeck=${COMINbdeckNHC}
   export comoutepa=${COMOUT}/EastPacific
@@ -51,6 +55,10 @@ cp -r ${COMINstats}/${bas}${num}/tc_stat .
 #---get the storm name from TC-vital file "syndat_tcvitals.${YYYY}"
 if [ ${stormBasin} = "al" ]; then
   grep "NHC  ${stormNumber}L" ${COMINvit} > syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}
+  echo $(tail -n 1 syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}) > TCvit_tail.txt
+  sed -i 's/NHC/NHCC/' TCvit_tail.txt
+elif [ ${stormBasin} = "cp" ]; then
+  grep "NHC  ${stormNumber}C" ${COMINvit} > syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}
   echo $(tail -n 1 syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}) > TCvit_tail.txt
   sed -i 's/NHC/NHCC/' TCvit_tail.txt
 elif [ ${stormBasin} = "ep" ]; then
@@ -121,6 +129,13 @@ if [ ${stormBasin} = "al" ]; then
   cd $metTCcomout
   cp -r ${COMINstats}/Atlantic/tc_stat .
   cp $metTCcomout/tc_stat/tc_stat_basin.out $metTCcomout/tc_stat/tc_stat.out
+elif [ ${stormBasin} = "cp" ]; then
+  export comoutbas=${comoutcpa}
+  export metTCcomout=${DATA}/CentralPacific
+  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+  cd $metTCcomout
+  cp -r ${COMINstats}/CentralPacific/tc_stat .
+  cp $metTCcomout/tc_stat/tc_stat_basin.out $metTCcomout/tc_stat/tc_stat.out
 elif [ ${stormBasin} = "ep" ]; then
   export comoutbas=${comoutepa}
   export metTCcomout=${DATA}/EastPacific
@@ -143,10 +158,10 @@ export PLOTDATA=${metTCcomout}
 #export RUN="tropcyc"
 export img_quality="low"
 export fhr_list="0,12,24,36,48,60,72,84,96,108,120,132,144,156,168"
-#export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
-export model_tmp_atcf_name_list="MD01,MD02,MD03"
-#export model_plot_name_list="GFS,ECMWF,CMC,UKM"
-export model_plot_name_list="GFS,ECMWF,CMC"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04"
+#export model_tmp_atcf_name_list="MD01,MD02,MD03"
+export model_plot_name_list="GFS,ECMWF,CMC,UKM"
+#export model_plot_name_list="GFS,ECMWF,CMC"
 export plot_CI_bars="NO"
 export stormNameB=Basin
 export tc_name=${stbasin}${under}${stormYear}${under}${stormNameB}

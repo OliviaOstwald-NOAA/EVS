@@ -7,10 +7,10 @@ export LEAD_List="-lead 000000 -lead 120000 -lead 240000 -lead 360000 -lead 4800
 
 export stormYear=${YYYY}
 #export basinlist="al ep wp"
-export basinlist="al"
+export basinlist="cp"
 #export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \
 #	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"
-export numlist="03"
+export numlist="01 02"
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -19,13 +19,17 @@ for num in $numlist; do
 
 export stormBasin=${bas}
 export stbasin=`echo ${stormBasin} | tr "[a-z]" "[A-Z]"`
-echo "${stbasin} upper case: AL/EP/WP"
+echo "${stbasin} upper case: AL/CP/EP/WP"
 export stormNumber=${num}
 
 if [ ${stormBasin} = "al" ]; then
   COMINbdeck=${COMINbdeckNHC}
   export comoutatl=${COMOUT}/Atlantic
   if [ ! -d ${comoutatl} ]; then mkdir -p ${comoutatl}; fi
+elif [ ${stormBasin} = "cp" ]; then
+  COMINbdeck=${COMINbdeckNHC}
+  export comoutcpa=${COMOUT}/CentralPacific
+  if [ ! -d ${comoutcpa} ]; then mkdir -p ${comoutcpa}; fi
 elif [ ${stormBasin} = "ep" ]; then
   COMINbdeck=${COMINbdeckNHC}
   export comoutepa=${COMOUT}/EastPacific
@@ -55,6 +59,11 @@ cd ${STORMdata}
 if [ ${stormBasin} = "al" ]; then
   cp ${COMINbdeckNHC}/b${stormBasin}${stormNumber}${stormYear}.dat ${STORMdata}/.
   grep "NHC  ${stormNumber}L" ${COMINvit} > syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}
+  echo $(tail -n 1 syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}) > TCvit_tail.txt
+  sed -i 's/NHC/NHCC/' TCvit_tail.txt
+elif [ ${stormBasin} = "cp" ]; then
+  cp ${COMINbdeckNHC}/b${stormBasin}${stormNumber}${stormYear}.dat ${STORMdata}/.
+  grep "NHC  ${stormNumber}C" ${COMINvit} > syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}
   echo $(tail -n 1 syndat_tcvitals.${YYYY}.${stormBasin}${stormNumber}) > TCvit_tail.txt
   sed -i 's/NHC/NHCC/' TCvit_tail.txt
 elif [ ${stormBasin} = "ep" ]; then
@@ -167,6 +176,8 @@ if [ "$SENDCOM" = 'YES' ]; then
   cp -r ${STORMroot}/tc_stat/* ${comoutroot}/tc_stat/.
   if [ ${stormBasin} = "al" ]; then
     cp ${comoutroot}/tc_stat/tc_stat_summary.tcst ${comoutatl}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst 
+  elif [ ${stormBasin} = "cp" ]; then
+    cp ${comoutroot}/tc_stat/tc_stat_summary.tcst ${comoutcpa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
   elif [ ${stormBasin} = "ep" ]; then
     cp ${comoutroot}/tc_stat/tc_stat_summary.tcst ${comoutepa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
   elif [ ${stormBasin} = "wp" ]; then
@@ -183,6 +194,8 @@ done
 #---  Atlantic/EastPacific/WestPacific Basin TC_Stat 
 if [ ${stormBasin} = "al" ]; then
   export comoutbas=${comoutatl}
+elif [ ${stormBasin} = "cp" ]; then
+  export comoutbas=${comoutcpa}
 elif [ ${stormBasin} = "ep" ]; then
   export comoutbas=${comoutepa}
 elif [ ${stormBasin} = "wp" ]; then
@@ -203,6 +216,9 @@ export metTCcomin=${comoutbas}
 
 if [ ${stormBasin} = "al" ]; then
   export metTCcomout=${DATA}/metTC/atlantic
+  if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+elif [ ${stormBasin} = "cp" ]; then
+  export metTCcomout=${DATA}/metTC/centralpacific
   if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
 elif [ ${stormBasin} = "ep" ]; then
   export metTCcomout=${DATA}/metTC/eastpacific
