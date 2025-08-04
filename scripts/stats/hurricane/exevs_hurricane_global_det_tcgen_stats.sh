@@ -85,7 +85,7 @@ if [ "$SENDCOM" = 'YES' ]; then
   cp ${OUTPUT}/tc_gen_${YEAR}_pairs.nc ${COMOUT}/tc_gen_${YEAR}_pairs_${basin}_${model}.nc
 fi
 
-cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/metplus/F024-168
+cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/metplus/adeck/false-tracks
 
 
 ### model do loop end

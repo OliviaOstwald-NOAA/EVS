@@ -6,7 +6,7 @@ export PS4=' + exevs_hurricane_global_det_tcgen_plots.sh line $LINENO: '
 export cartopyDataDir=${cartopyDataDir:-/apps/ops/prod/data/cartopy}
 
 export YEAR=${YYYY}
-export TCGENdays="TC Genesis (05/01-11/30/${YYYY})"
+export TCGENdays="TC Gen (05/01-11/30/${YYYY} FT #1)"
 export basinlist="al"
 export modellist="gfs"
 
@@ -115,7 +115,7 @@ fi
 ### model do loop end
 done
 
-cp -r /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/evs/v2.0/plots/hurricane/global_det/tcgen/*al.2024.gfs* /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/metplus/F024-168/plots
+cp -r /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/evs/v2.0/plots/hurricane/global_det/tcgen/*al.2024.gfs* /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/metplus/adeck/false-tracks/plots
 
 #--- plot the Performance Diagram
 export DATAplot=${DATA}/${basin}
