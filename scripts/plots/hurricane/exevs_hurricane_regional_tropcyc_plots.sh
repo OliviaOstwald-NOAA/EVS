@@ -4,10 +4,10 @@ export PS4=' + exevs_hurricane_regional_tropcyc_plots.sh line $LINENO: '
 
 export stormYear=${YYYY}
 #export basinlist="al ep"
-export basinlist="ep"
+export basinlist="al"
 #export numlist="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 \  
 #	        21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"  
-export numlist="07" 
+export numlist="04 05" 
 
 for bas in $basinlist; do
 ### bas do loop start
@@ -83,8 +83,7 @@ export LOGOroot=${FIXevs}/logos
 export PLOTDATA=${STORMroot}
 #export RUN="tropcyc"
 export img_quality="low"
-#export fhr_list="0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126"
-export fhr_list="0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96"
+export fhr_list="0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126"
 export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
 #export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05"
 export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS,CTCX"
