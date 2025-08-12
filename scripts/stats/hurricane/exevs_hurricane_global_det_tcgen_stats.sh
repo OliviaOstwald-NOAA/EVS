@@ -21,7 +21,7 @@ if [ ! -d ${OUTPUT} ]; then mkdir -p ${OUTPUT}; fi
 
 if [ ${model} = "gfs" ]; then
   cp ${COMINgenesis}/${model}_genesis_${YEAR} ${INPUT}/ALLgenesis_${YEAR}
-  export INIT_FREQ=12
+  export INIT_FREQ=6
 elif [ ${model} = "ecmwf" ]; then
   cp ${COMINgenesis}/${model}_genesis_${YEAR} ${INPUT}/ALLgenesis_${YEAR}
   export INIT_FREQ=12
@@ -54,8 +54,8 @@ fi
 #--- run for TC_gen
 cd ${OUTPUT}
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCGen_template.conf .
-export VALID_FREQ=6
-export INIT_FREQ=12
+export VALID_FREQ=12
+export INIT_FREQ=6
 
 export SEARCH0="METBASE_template"
 export SEARCH1="INPUT_BASE_template"
@@ -85,7 +85,7 @@ if [ "$SENDCOM" = 'YES' ]; then
   cp ${OUTPUT}/tc_gen_${YEAR}_pairs.nc ${COMOUT}/tc_gen_${YEAR}_pairs_${basin}_${model}.nc
 fi
 
-cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/metplus/adeck/false-tracks
+cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/vpppg/noscrub/olivia.ostwald/gen-test/baseline/08072025/
 
 
 ### model do loop end

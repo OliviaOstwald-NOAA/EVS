@@ -42,9 +42,9 @@ export PDY=20241231
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCgen/oge/bdeck
 #export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/olivia.ostwald/Data/Year2024/TCgen/oge/bdeck
 export COMINgenesis=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/TCgen
-#export COMINadeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
+export COMINadeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-#export COMINadeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
+export COMINadeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
 export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
