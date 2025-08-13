@@ -24,7 +24,7 @@ export NET=${NET:-evs}
 export COMPONENT=${COMPONENT:-hurricane}
 export RUN=${RUN:-global_det} # global_det, global_ens, regional
 export STEP=${STEP:-stats}  # plots, stats 
-export VERIF_CASE=${VERIF_CASE:-tropcyc}  # tropcyc, tcgen  
+export VERIF_CASE=${VERIF_CASE:-tropcyc}  # tropcyc, tcgen, windradii_all, windradii_avg 
 
 ####################################
 # Determine Job Output Name on System
@@ -101,7 +101,7 @@ export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
 export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
-elif [ ${RUN} = "regional" -a ${VERIF_CASE} = "windradii" ]; then
+elif [ ${RUN} = "regional" -a ${VERIF_CASE} = "windradii_all" ]; then
 export YYYY=`echo ${PDY} | cut -c1-4`
 export YY24=`echo ${PDY} | cut -c3-4`
 export COMINvit=${COMINvit:-/your/TC/vitals/file}
@@ -109,6 +109,13 @@ export COMINtrack=${COMINtrack:-your/TC/track/file}
 export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
 export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
+elif [ ${RUN} = "regional" -a ${VERIF_CASE} = "windradii_avg" ]; then
+export YYYY=`echo ${PDY} | cut -c1-4`
+export YY24=`echo ${PDY} | cut -c3-4`
+export COMINvit=${COMINvit:-/your/TC/vitals/file}
+export COMINtrack=${COMINtrack:-your/TC/track/file}
+export COMINbdeckNHC=${COMINbdeckNHC:-/your/NHC/bdeck/data/dir}
+export COMINbdeckJTWC=${COMINbdeckJTWC:-/your/JTWC/bdeck/data/dir}
 
 else
 echo "Job failed: unknown ${RUN} and ${VERIF_CASE}"
