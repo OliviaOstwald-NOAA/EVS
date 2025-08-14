@@ -38,6 +38,9 @@ export PDY=20251231
 export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMPONENT}/${RUN}/${VERIF_CASE}
 
 #Define TC-vital file, and the directory for Bdeck files
+#export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/00-12Z/syndat_tcvitals.2025
+#export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/00-12Z/bdeck
+#export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/00-12Z/bdeck
 #export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/06-18Z/syndat_tcvitals.2025
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/06-18Z/bdeck
 #export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/erin/06-18Z/bdeck
