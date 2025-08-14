@@ -41,7 +41,7 @@ legend_fontsize = 13
 legend_loc = 'upper left'
 legend_ncol = 1
 title_loc = 'center'
-model_type = os.environ['windradii_avg_model_type']
+model_type = os.environ['windradii_all_model_type']
 if model_type == 'global':
   model_obs_plot_settings_dict = {
     'model1': {'color': '#000000',

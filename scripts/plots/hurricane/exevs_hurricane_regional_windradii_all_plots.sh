@@ -131,7 +131,7 @@ if [ $nimgs -ne 0 ]; then
     cp ${STORMroot}/plot/${tc_name}/images/ABSANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_NE64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
     cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_34-BNE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_NE34_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
     cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_50-BNE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_NE50_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
-    cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.wind_radiiNE64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
+    cp ${STORMroot}/plot/${tc_name}/images/ANE_WIND_64-BNE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_NE64_bias.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
     cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_34-BSE_WIND_34_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_SE34_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
     cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_50-BSE_WIND_50_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_SE50_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
     cp ${STORMroot}/plot/${tc_name}/images/ABSASE_WIND_64-BSE_WIND_64_fhrmean_${tc_name}_regional.gif ${comoutroot}/evs.hurricane_regional.windradii_SE64_err.${stormBasin}.${stormYear}.${stormName}${stormNumber}.png
