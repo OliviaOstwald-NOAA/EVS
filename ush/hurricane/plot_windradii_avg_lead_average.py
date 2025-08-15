@@ -198,17 +198,23 @@ if os.path.exists(summary_tcst_filename):
         for COLUMN_group in summary_tcst_data_groupby_COLUMN.groups.keys():
             print("Creating plot for "+COLUMN_group)
             if COLUMN_group == 'ABS(AAL_WIND_34-BAL_WIND_34)':
-                formal_stat_name =  'Average 34-kt Wind Radii Error (nm)'
+                formal_stat_name =  'Quadrant-Mean R34 Error (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(AAL_WIND_50-BAL_WIND_50)':
-                formal_stat_name =  'Average 50-kt Wind Radii Error (nm)'
+                formal_stat_name =  'Quadrant-Mean R50 Error (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(AAL_WIND_64-BAL_WIND_64)':
-                formal_stat_name =  'Average 64-kt Wind Radii Error (nm)'
+                formal_stat_name =  'Quadrant-Mean R64 Error (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'AAL_WIND_34-BAL_WIND_34':
-                formal_stat_name =  'Average 34-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'Quadrant-Mean R34 Bias (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'AAL_WIND_50-BAL_WIND_50':
-                formal_stat_name =  'Average 50-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'Quadrant-Mean R50 Bias (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'AAL_WIND_64-BAL_WIND_64':
-                formal_stat_name =  'Average 64-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'Quadrant-Mean R64 Bias (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Bias (nm)'
             else:
                 formal_stat_name = COLUMN_group
             summary_tcst_data_COLUMN = (
@@ -235,7 +241,7 @@ if os.path.exists(summary_tcst_filename):
             else:
                 ax.set_xticks(fhrs)
             ax.set_xlim([fhrs[0], fhrs[-1]])
-            ax.set_ylabel('Wind Radii (nm)')
+            ax.set_ylabel(formal_ylabel_name)
             #ax.set_ylabel(formal_stat_name)
             model_num = 0
             CI_bar_max_widths = np.append(np.diff(fhrs),

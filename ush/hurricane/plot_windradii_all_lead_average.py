@@ -198,53 +198,77 @@ if os.path.exists(summary_tcst_filename):
         for COLUMN_group in summary_tcst_data_groupby_COLUMN.groups.keys():
             print("Creating plot for "+COLUMN_group)
             if COLUMN_group == 'ABS(ANE_WIND_34-BNE_WIND_34)':
-                formal_stat_name =  'NEQ 34-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NE Quadrant R34 Error (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASE_WIND_34-BSE_WIND_34)':
-                formal_stat_name =  'SEQ 34-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SE Quadrant R34 Error (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASW_WIND_34-BSW_WIND_34)':
-                formal_stat_name =  'SWQ 34-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SW Quadrant R34 Error (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ANW_WIND_34-BNW_WIND_34)':
-                formal_stat_name =  'NWQ 34-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NW Quadrant R34 Error (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ANE_WIND_50-BNE_WIND_50)':
-                formal_stat_name =  'NEQ 50-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NE Quadrant R50 Error (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASE_WIND_50-BSE_WIND_50)':
-                formal_stat_name =  'SEQ 50-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SE Quadrant R50 Error (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASW_WIND_50-BSW_WIND_50)':
-                formal_stat_name =  'SWQ 50-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SW Quadrant R50 Error (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ANW_WIND_50-BNW_WIND_50)':
-                formal_stat_name =  'NWQ 50-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NW Quadrant R50 Error (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ANE_WIND_64-BNE_WIND_64)':
-                formal_stat_name =  'NEQ 64-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NE Quadrant R64 Error (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASE_WIND_64-BSE_WIND_64)':
-                formal_stat_name =  'SEQ 64-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SE Quadrant R64 Error (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ASW_WIND_64-BSW_WIND_64)':
-                formal_stat_name =  'SWQ 64-kt Wind Radii Error (nm)'
+                formal_stat_name =  'SW Quadrant R64 Error (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ABS(ANW_WIND_64-BNW_WIND_64)':
-                formal_stat_name =  'NWQ 64-kt Wind Radii Error (nm)'
+                formal_stat_name =  'NW Quadrant R64 Error (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Error (nm)'
             elif COLUMN_group == 'ANE_WIND_34-BNE_WIND_34':
-                formal_stat_name =  'NEQ 34-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NE Quadrant R34 Bias (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASE_WIND_34-BSE_WIND_34':
-                formal_stat_name =  'SEQ 34-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SE Quadrant R34 Bias (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASW_WIND_34-BSW_WIND_34':
-                formal_stat_name =  'SWQ 34-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SW Quadrant R34 Bias (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ANW_WIND_34-BNW_WIND_34':
-                formal_stat_name =  'NWQ 34-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NW Quadrant R34 Bias (nm)'
+                formal_ylabel_name =  '34-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ANE_WIND_50-BNE_WIND_50':
-                formal_stat_name =  'NEQ 50-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NE Quadrant R50 Bias (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASE_WIND_50-BSE_WIND_50':
-                formal_stat_name =  'SEQ 50-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SE Quadrant R50 Bias (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASW_WIND_50-BSW_WIND_50':
-                formal_stat_name =  'SWQ 50-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SW Quadrant R50 Bias (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ANW_WIND_50-BNW_WIND_50':
-                formal_stat_name =  'NWQ 50-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NW Quadrant R50 Bias (nm)'
+                formal_ylabel_name =  '50-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ANE_WIND_64-BNE_WIND_64':
-                formal_stat_name =  'NEQ 64-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NE Quadrant R64 Bias (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASE_WIND_64-BSE_WIND_64':
-                formal_stat_name =  'SEQ 64-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SE Quadrant R64 Bias (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ASW_WIND_64-BSW_WIND_64':
-                formal_stat_name =  'SWQ 64-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'SW Quadrant R64 Bias (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Bias (nm)'
             elif COLUMN_group == 'ANW_WIND_64-BNW_WIND_64':
-                formal_stat_name =  'NWQ 64-kt Wind Radii Bias (nm)'
+                formal_stat_name =  'NW Quadrant R64 Bias (nm)'
+                formal_ylabel_name =  '64-kt Wind Radii Bias (nm)'
             else:
                 formal_stat_name = COLUMN_group
             summary_tcst_data_COLUMN = (
@@ -271,7 +295,7 @@ if os.path.exists(summary_tcst_filename):
             else:
                 ax.set_xticks(fhrs)
             ax.set_xlim([fhrs[0], fhrs[-1]])
-            ax.set_ylabel('Wind Radii (nm)')
+            ax.set_ylabel(formal_ylabel_name)
            # ax.set_ylabel(formal_stat_name)
             model_num = 0
             CI_bar_max_widths = np.append(np.diff(fhrs),
