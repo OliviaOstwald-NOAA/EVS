@@ -250,7 +250,61 @@ if [ "$SENDCOM" = 'YES' ]; then
   cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
   cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
 fi
+
+#RIRW conf
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin_rirw.conf .
+
+#export SEARCHy="LEAD_template"
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin_rirw.conf
+
+#export SEARCH7="TC_STAT_INIT_BEG_temp"
+#export SEARCH8="TC_STAT_INIT_END_temp"
+export firstday="0101_00"
+export lastday="1231_18"
+export symdhB=${YYYY}${firstday}
+export eymdhB=${YYYY}${lastday}
+echo "$symdhB, $eymdhB"
+
+sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin_rirw.conf
+sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin_rirw.conf
+
+#threshold loop
+for rirw_thresh in ge30 le-30; do
+ export rirw_thresh=$rirw_thresh
+run_metplus.py -c ${metTCcomout}/TCStat_template_basin_rirw.conf
+
+#create separate CTC files for each model
+if [ "$SENDCOM" = 'YES' ]; then
+ if [ ! -d ${comoutbas}/tc_stat_rirw ]; then mkdir -p ${comoutbas}/tc_stat_rirw; fi
+ cp ${metTCcomout}/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.out ${comoutbas}/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.out
+ cp ${metTCcomout}/tc_stat_rirw/tc_stat_summary_basin_rirw_${rirw_thresh}.tcst ${comoutbas}/tc_stat_rirw/tc_stat_summary_basin_rirw_${rirw_thresh}.tcst
 fi
+
+#create separate CTC files for each model
+cd ${metTCcomout}/tc_stat_rirw/
+
+grep 'MD01' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md01.out
+grep 'MD02' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md02.out
+grep 'MD03' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md03.out
+grep 'MD04' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md04.out
+grep 'MD05' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md05.out
+grep 'MD06' tc_stat_basin_rirw_${rirw_thresh}.out >> tc_stat_basin_rirw_${rirw_thresh}_md06.out
+
+if [ "$SENDCOM" = 'YES' ]; then
+ if [ ! -d ${comoutbas}/tc_stat_rirw ]; then mkdir -p ${comoutbas}/tc_stat_rirw; fi
+ cp tc_stat_basin_rirw_${rirw_thresh}_md01.out ${comoutbas}/tc_stat_rirw
+ cp tc_stat_basin_rirw_${rirw_thresh}_md02.out ${comoutbas}/tc_stat_rirw
+ cp tc_stat_basin_rirw_${rirw_thresh}_md03.out ${comoutbas}/tc_stat_rirw
+ cp tc_stat_basin_rirw_${rirw_thresh}_md04.out ${comoutbas}/tc_stat_rirw
+ cp tc_stat_basin_rirw_${rirw_thresh}_md05.out ${comoutbas}/tc_stat_rirw
+ cp tc_stat_basin_rirw_${rirw_thresh}_md06.out ${comoutbas}/tc_stat_rirw
+fi  
 
 ### bas do loop end
 done
