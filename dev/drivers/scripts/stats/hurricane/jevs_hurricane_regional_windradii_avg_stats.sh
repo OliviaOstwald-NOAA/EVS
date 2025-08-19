@@ -39,8 +39,8 @@ export PDY=20251231
 #export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/tracks.atcfunix.24
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 #export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/syndat_tcvitals.2025
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/tracks.atcfunix.25
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/TCvital/syndat_tcvitals.2025
+export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/regionalTrack/tracks.atcfunix.25
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 

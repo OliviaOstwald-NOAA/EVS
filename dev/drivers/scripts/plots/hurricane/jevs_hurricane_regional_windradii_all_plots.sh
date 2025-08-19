@@ -41,7 +41,7 @@ export COMINstats=/lfs/h2/emc/vpppg/noscrub/$USER/evs/${evs_ver_2d}/stats/${COMP
 #export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
 #export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
 #export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/syndat_tcvitals.2025
+export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/TCvital/syndat_tcvitals.2025
 export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/Data/Year2025/bdeck
 
