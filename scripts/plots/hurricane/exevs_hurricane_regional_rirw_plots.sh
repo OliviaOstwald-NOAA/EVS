@@ -169,4 +169,106 @@ if [ $bimgs -ne 0 ]; then
   fi
 fi
 ### bas do loop end
+#---tc_stat_rirw.out
+for rirw_thresh in ge30 le-30; do
+ export rirw_thresh=$rirw_thresh
+
+if [ ${rirw_thresh} = "ge30" ]; then
+ export rirw_label="ri"
+elif [ ${rirw_thresh} = "le-30" ]; then
+ export rirw_label="rw"
+fi
+
+#for modelname in gfs hwrf hmon ctcx; do
+# export modelname=$modelname
+
+if [ ${stormBasin} = "al" ]; then
+  export comoutbas=${comoutatl}
+  export metTCcomout=${DATA}/Atlantic
+if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+  cd $metTCcomout
+  cp -r ${COMINstats}/Atlantic/tc_stat_rirw .
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.txt
+elif [ ${stormBasin} = "ep" ]; then
+  export comoutbas=${comoutepa}
+  export metTCcomout=${DATA}/EastPacific
+if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+  cd $metTCcomout
+  cp -r ${COMINstats}/EastPacific/tc_stat_rirw .
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.txt
+elif [ ${stormBasin} = "wp" ]; then
+  export comoutbas=${comoutwpa}
+  export metTCcomout=${DATA}/WestPacific
+if [ ! -d $metTCcomout ]; then mkdir -p $metTCcomout; fi
+  cd $metTCcomout
+  cp -r ${COMINstats}/WestPacific/tc_stat_rirw .
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.txt
+  cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.out $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.txt
+fi
+
+#--- Performance Diagram Plots
+echo "Starting Performance Diagram Plots"
+#export TCRIRWcases="TC RIRW(05/01/${YEAR}-11/30/${YEAR})"
+export LOGOroot=${FIXevs}/logos
+export PLOTDATA=${metTCcomout}/tc_stat_rirw/
+export img_quality="low"
+export fhr_list="0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126"
+export model_tmp_atcf_name_list="MD01,MD02,MD03,MD04,MD05,MD06"
+export model_plot_name_list="HFSA,HFSB,HWRF,HMON,GFS,CTCX"
+export plot_CI_bars="NO"
+export stormNameB=Basin
+export tc_name=${stbasin}${under}${stormYear}${under}${stormNameB}
+export basin=${stbasin}
+export tc_num=
+export rirw_model_type="regional"
+
+export DATAplot=$metTCcomout/plot/
+
+if [ ! -d ${DATAplot} ]; then mkdir -p ${DATAplot}; fi
+cd ${DATAplot}
+cp ${USHevs}/${COMPONENT}/tcrirw_performance_diagram.py .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md01.out .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md02.out .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md03.out .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md04.out .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md05.out .
+cp $metTCcomout/tc_stat_rirw/tc_stat_basin_rirw_${rirw_thresh}_md06.out .
+
+export CTCfile01="tc_stat_basin_rirw_${rirw_thresh}_md01.out"
+export CTCfile02="tc_stat_basin_rirw_${rirw_thresh}_md02.out"
+export CTCfile03="tc_stat_basin_rirw_${rirw_thresh}_md03.out"
+export CTCfile04="tc_stat_basin_rirw_${rirw_thresh}_md04.out"
+export CTCfile05="tc_stat_basin_rirw_${rirw_thresh}_md05.out"
+export CTCfile06="tc_stat_basin_rirw_${rirw_thresh}_md06.out"
+python tcrirw_performance_diagram.py
+
+rimgs=$(ls ${metTCcomout}/plot/${tc_name}/images/* |wc -l)
+if [ $rimgs -ne 0 ]; then
+  cd ${metTCcomout}/plot/
+  convert tcrirw_performance_diagram_${rirw_thresh}.png tcrirw_performance_diagram_${rirw_thresh}.gif
+  rm -f *.png
+
+if [ "$SENDCOM" = 'YES' ]; then
+  cp ${metTCcomout}/plot/tcrirw_performance_diagram_${rirw_thresh}.gif ${comoutbas}/evs.hurricane_regional.${rirw_label}_perfdiag.${stormBasin}.${stormYear}.season.png
+fi
+fi
+
+done
 done
