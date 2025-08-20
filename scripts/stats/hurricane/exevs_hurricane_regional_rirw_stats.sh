@@ -250,6 +250,7 @@ if [ "$SENDCOM" = 'YES' ]; then
   cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
   cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
 fi
+fi
 
 #RIRW conf
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin_rirw.conf .
@@ -307,4 +308,5 @@ if [ "$SENDCOM" = 'YES' ]; then
 fi  
 
 ### bas do loop end
+done
 done
