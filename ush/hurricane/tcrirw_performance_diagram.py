@@ -127,6 +127,64 @@ def performance_diag():
   SUR4 = 1.0 - FAR4
   #POD4 = POD4 + 0.03
   
+  CTCfile05 = os.environ['CTCfile05']
+  row = np.loadtxt(CTCfile05, dtype=str, skiprows=1)
+  total5 = row[1:,11]
+  print('Printing total 5', total5)
+  hit5 = np.sum(np.array(row[1:,12], dtype=float))
+  print('Printing hits 5', hit5)
+  falsea5 = np.sum(np.array(row[1:,13], dtype=float))
+  print('Printing false alarms 5', falsea5)
+  miss5 = np.sum(np.array(row[1:,14], dtype=float))
+  print('Printing misses 5', miss5)
+  hm5 = np.sum(np.add(hit5, miss5, dtype=float))
+  print('Printing hits + misses 5', hm5)
+  falsea5 = np.sum(np.array(row[1:,13], dtype=float))
+  print('Printing false alarms 5', falsea5)
+  miss5 = np.sum(np.array(row[1:,14], dtype=float))
+  print('Printing misses 5', miss5)
+  hm5 = np.sum(np.add(hit5, miss5, dtype=float))
+  print('Printing hits + misses 5', hm5)
+  hf5 = np.sum(np.add(hit5, falsea5, dtype=float))
+  print('Printing hits + false alarms 5', hf5)
+  POD5 = np.sum(np.divide(hit5, hm5, out = np.zeros_like(hit5), where = hm5 != 0))
+  print('Printing POD5', POD5) #POD5 = hit5/(hit5 + miss5)
+  FAR5 = np.sum(np.divide(hit5, hf5, out = np.zeros_like(hit5), where = hf5 != 0))
+  print('Printing FAR5', FAR5) #FAR5 = falsea5/(hit5 + falsea5)
+  SUR5 = 1.0 - FAR5
+  print('Printing SUR5', SUR5)
+  SUR5 = 1.0 - FAR5
+  #POD5 = POD5 + 0.03
+  
+  CTCfile06 = os.environ['CTCfile06']
+  row = np.loadtxt(CTCfile06, dtype=str, skiprows=1)
+  total6 = row[1:,11]
+  print('Printing total 6', total6)
+  hit6 = np.sum(np.array(row[1:,12], dtype=float))
+  print('Printing hits 6', hit6)
+  falsea6 = np.sum(np.array(row[1:,13], dtype=float))
+  print('Printing false alarms 6', falsea6)
+  miss6 = np.sum(np.array(row[1:,14], dtype=float))
+  print('Printing misses 6', miss6)
+  hm6 = np.sum(np.add(hit6, miss6, dtype=float))
+  print('Printing hits + misses 6', hm6)
+  falsea6 = np.sum(np.array(row[1:,13], dtype=float))
+  print('Printing false alarms 6', falsea6)
+  miss6 = np.sum(np.array(row[1:,14], dtype=float))
+  print('Printing misses 6', miss6)
+  hm6 = np.sum(np.add(hit6, miss6, dtype=float))
+  print('Printing hits + misses 6', hm6)
+  hf6 = np.sum(np.add(hit6, falsea6, dtype=float))
+  print('Printing hits + false alarms 6', hf6)
+  POD6 = np.sum(np.divide(hit6, hm6, out = np.zeros_like(hit6), where = hm6 != 0))
+  print('Printing POD6', POD6) #POD6 = hit6/(hit6 + miss6)
+  FAR6 = np.sum(np.divide(hit6, hf6, out = np.zeros_like(hit6), where = hf6 != 0))
+  print('Printing FAR6', FAR6) #FAR6 = falsea6/(hit6 + falsea6)
+  SUR6 = 1.0 - FAR6
+  print('Printing SUR6', SUR6)
+  SUR6 = 1.0 - FAR6
+  #POD6 = POD6 + 0.03
+  
   #Output file name
   rirw_thresh = os.environ['rirw_thresh']
   #stormBasin = os.environ['stormBasin']
@@ -197,29 +255,41 @@ def performance_diag():
   #    print(MD)
 
   #Test/sample markers/text
-  ax.plot(SUR,POD,marker='o',markersize=10,c='#000000')
-  #ax.text(SUR,POD,'GFS',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#000000')
+  ax.plot(SUR,POD,marker='o',markersize=10,c='#8400C8')
+  #ax.text(SUR,POD,'HFSA',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#8400C8')
 
-  ax.plot(SUR2,POD2,marker='o',markersize=10,c='#8400C8')
-  #ax.text(SUR2,POD2,'HWRF',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#8400C8')
+  ax.plot(SUR2,POD2,marker='o',markersize=10,c='#00DC00')
+  #ax.text(SUR2,POD2,'HFSB',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#00DC00')
 
-  ax.plot(SUR3,POD3,marker='o',markersize=10,c='#00DC00')
-  #ax.text(SUR3,POD3,'HMON',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#00DC00')
+  ax.plot(SUR3,POD3,marker='o',markersize=10,c='#E63B7F')
+  #ax.text(SUR3,POD3,'HWRF',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#E63B7F')
 
-  ax.plot(SUR4,POD4,marker='o',markersize=10,c='#56B4E9')
-  #ax.text(SUR4,POD4,'CTCX',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#56B4E9')
+  ax.plot(SUR4,POD4,marker='o',markersize=10,c='#49D9DE')
+  #ax.text(SUR4,POD4,'HMON',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#49D9DE')
   
-  ax.plot(0.13,0.95,marker='o',markersize=5,c='#000000')
-  ax.text(0.16,0.95,'GFS',fontsize=7,fontweight='bold',ha='center',va='center',color='#000000')
+  ax.plot(SUR5,POD5,marker='o',markersize=10,c='#000000')
+  #ax.text(SUR5,POD5,'GFS',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#000000')
+  
+  ax.plot(SUR6,POD6,marker='o',markersize=10,c='#4287F5')
+  #ax.text(SUR6,POD6,'CTCX',fontsize=10,fontweight='bold',ha='center',va='bottom',color='#4287F5')
+  
+  ax.plot(0.13,0.95,marker='o',markersize=5,c='#8400C8')
+  ax.text(0.17,0.95,'HFSA',fontsize=7,fontweight='bold',ha='center',va='center',color='#8400C8')
 
-  ax.plot(0.22,0.95,marker='o',markersize=5,c='#8400C8')
-  ax.text(0.26,0.95,'HWRF',fontsize=7,fontweight='bold',ha='center',va='center',color='#8400C8')
+  ax.plot(0.23,0.95,marker='o',markersize=5,c='#00DC00')
+  ax.text(0.27,0.95,'HFSB',fontsize=7,fontweight='bold',ha='center',va='center',color='#00DC00')
 
-  ax.plot(0.33,0.95,marker='o',markersize=5,c='#00DC00')
-  ax.text(0.37,0.95,'HMON',fontsize=7,fontweight='bold',ha='center',va='center',color='#00DC00')
+  ax.plot(0.33,0.95,marker='o',markersize=5,c='#E63B7F')
+  ax.text(0.37,0.95,'HWRF',fontsize=7,fontweight='bold',ha='center',va='center',color='#E63B7F')
 
-  ax.plot(0.43,0.95,marker='o',markersize=5,c='#56B4E9')
-  ax.text(0.47,0.95,'CTCX',fontsize=7,fontweight='bold',ha='center',va='center',color='#56B4E9')
+  ax.plot(0.43,0.95,marker='o',markersize=5,c='#49D9DE')
+  ax.text(0.47,0.95,'HMON',fontsize=7,fontweight='bold',ha='center',va='center',color='#49D9DE')
+
+  ax.plot(0.53,0.95,marker='o',markersize=5,c='#000000')
+  ax.text(0.57,0.95,'GFS',fontsize=7,fontweight='bold',ha='center',va='center',color='#000000')
+
+  ax.plot(0.63,0.95,marker='o',markersize=5,c='#4287F5')
+  ax.text(0.67,0.95,'CTCX',fontsize=7,fontweight='bold',ha='center',va='center',color='#4287F5')
 
   # Build formal plot title
   full_title = 'RI/RW Performance Diagram' 
