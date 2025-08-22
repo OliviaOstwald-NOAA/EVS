@@ -135,19 +135,19 @@ sed -i "s|$SEARCHx|$Model_List|g" TCPairs_template.conf
 run_metplus.py -c $STORMdata/TCPairs_template.conf
 export err=$?; err_chk
 
-#--- run for TC_stat_rirw 
+#--- run for TC_stat 
 cd $STORMdata
 
-cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_rirw.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template.conf .
 
 export SEARCHy="LEAD_template"
-sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCH1|$STORMdata|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCH2|$STORMroot|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCH3|$startdate|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCH4|$startdate|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_rirw.conf
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template.conf
+sed -i "s|$SEARCH1|$STORMdata|g" TCStat_template.conf
+sed -i "s|$SEARCH2|$STORMroot|g" TCStat_template.conf
+sed -i "s|$SEARCH3|$startdate|g" TCStat_template.conf
+sed -i "s|$SEARCH4|$startdate|g" TCStat_template.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template.conf
 
 export SEARCH7="TC_STAT_INIT_BEG_temp"
 export SEARCH8="TC_STAT_INIT_END_temp"
@@ -156,23 +156,23 @@ export symdh=${YY01}${MM01}${DD01}${under}${HH01}
 export eymdh=${YY02}${MM02}${DD02}${under}${HH02}
 echo "$symdh, $eymdh"
 
-sed -i "s|$SEARCH7|$symdh|g" TCStat_template_rirw.conf
-sed -i "s|$SEARCH8|$eymdh|g" TCStat_template_rirw.conf
+sed -i "s|$SEARCH7|$symdh|g" TCStat_template.conf
+sed -i "s|$SEARCH8|$eymdh|g" TCStat_template.conf
 
-run_metplus.py -c $STORMdata/TCStat_template_rirw.conf
+run_metplus.py -c $STORMdata/TCStat_template.conf
 export err=$?; err_chk
 
 if [ "$SENDCOM" = 'YES' ]; then
   if [ ! -d ${comoutroot}/tc_pairs ]; then mkdir -p ${comoutroot}/tc_pairs; fi
-  if [ ! -d ${comoutroot}/tc_stat_rirw ]; then mkdir -p ${comoutroot}/tc_stat_rirw; fi
+  if [ ! -d ${comoutroot}/tc_stat ]; then mkdir -p ${comoutroot}/tc_stat; fi
   cp -r ${STORMroot}/tc_pairs/* ${comoutroot}/tc_pairs/.
-  cp -r ${STORMroot}/tc_stat_rirw/* ${comoutroot}/tc_stat_rirw/.
+  cp -r ${STORMroot}/tc_stat/* ${comoutroot}/tc_stat/.
   if [ ${stormBasin} = "al" ]; then
-    cp ${STORMroot}/tc_stat_rirw/tc_stat_rirw_summary.tcst ${comoutatl}/${stormBasin}${stormNumber}${stormYear}_stat_rirw_summary.tcst 
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutatl}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst 
   elif [ ${stormBasin} = "ep" ]; then
-    cp ${STORMroot}/tc_stat_rirw/tc_stat_rirw_summary.tcst ${comoutepa}/${stormBasin}${stormNumber}${stormYear}_stat_rirw_summary.tcst
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutepa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
   elif [ ${stormBasin} = "wp" ]; then
-    cp ${STORMroot}/tc_stat_rirw/tc_stat_rirw_summary.tcst ${comoutwpa}/${stormBasin}${stormNumber}${stormYear}_stat_rirw_summary.tcst
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutwpa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
   fi
 fi
 
@@ -220,41 +220,37 @@ cd $metTCcomout
 #export SEARCH3=INIT_BEG_template
 #export SEARCH4=INIT_END_template
 
-#### commenting out lines below before removing to only call RI/RW conf and not tropcyc ####
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
 
-#cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
+#export SEARCHy="LEAD_template"
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
 
-##export SEARCHy="LEAD_template"
-#sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
+#export SEARCH7="TC_STAT_INIT_BEG_temp"
+#export SEARCH8="TC_STAT_INIT_END_temp"
+export firstday="0101_00"
+export lastday="1231_18"
+export symdhB=${YYYY}${firstday}
+export eymdhB=${YYYY}${lastday}
+echo "$symdhB, $eymdhB"
 
-##export SEARCH7="TC_STAT_INIT_BEG_temp"
-##export SEARCH8="TC_STAT_INIT_END_temp"
-#export firstday="0101_00"
-#export lastday="1231_18"
-#export symdhB=${YYYY}${firstday}
-#export eymdhB=${YYYY}${lastday}
-#echo "$symdhB, $eymdhB"
+sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
 
-#sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
+run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
+export err=$?; err_chk
 
-#run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
-#export err=$?; err_chk
-
-#if [ "$SENDCOM" = 'YES' ]; then
-#  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
-#  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
-#  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
-#fi
-#fi
-
-### end of commented out lines for test ###
+if [ "$SENDCOM" = 'YES' ]; then
+  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
+  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
+  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
+fi
+fi
 
 #RIRW conf
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin_rirw.conf .
@@ -312,4 +308,5 @@ if [ "$SENDCOM" = 'YES' ]; then
 fi  
 
 ### bas do loop end
+done
 done
