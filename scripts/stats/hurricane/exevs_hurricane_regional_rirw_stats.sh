@@ -222,37 +222,37 @@ cd $metTCcomout
 
 #### commenting out lines below before removing to only call RI/RW conf and not tropcyc ####
 
-#cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin.conf .
 
-##export SEARCHy="LEAD_template"
-#sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
+#export SEARCHy="LEAD_template"
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH1|$metTCcomin|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH2|$metTCcomout|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH3|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH4|$startdateB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template_basin.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template_basin.conf
 
-##export SEARCH7="TC_STAT_INIT_BEG_temp"
-##export SEARCH8="TC_STAT_INIT_END_temp"
-#export firstday="0101_00"
-#export lastday="1231_18"
-#export symdhB=${YYYY}${firstday}
-#export eymdhB=${YYYY}${lastday}
-#echo "$symdhB, $eymdhB"
+#export SEARCH7="TC_STAT_INIT_BEG_temp"
+#export SEARCH8="TC_STAT_INIT_END_temp"
+export firstday="0101_00"
+export lastday="1231_18"
+export symdhB=${YYYY}${firstday}
+export eymdhB=${YYYY}${lastday}
+echo "$symdhB, $eymdhB"
 
-#sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
-#sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH7|$symdhB|g" TCStat_template_basin.conf
+sed -i "s|$SEARCH8|$eymdhB|g" TCStat_template_basin.conf
 
-#run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
-#export err=$?; err_chk
+run_metplus.py -c ${metTCcomout}/TCStat_template_basin.conf
+export err=$?; err_chk
 
-#if [ "$SENDCOM" = 'YES' ]; then
-#  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
-#  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
-#  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
-#fi
-#fi
+if [ "$SENDCOM" = 'YES' ]; then
+  if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
+  cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
+  cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
+fi
+fi
 
 ### end of commented out lines for test ###
 
@@ -310,6 +310,6 @@ if [ "$SENDCOM" = 'YES' ]; then
  cp tc_stat_basin_rirw_${rirw_thresh}_md05.out ${comoutbas}/tc_stat_rirw
  cp tc_stat_basin_rirw_${rirw_thresh}_md06.out ${comoutbas}/tc_stat_rirw
 fi  
-
+done
 ### bas do loop end
 done
