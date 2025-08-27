@@ -283,25 +283,25 @@ def performance_diag():
 
 
   # --- lines 285-302 from Gemini --- #
-  ax.plot(SUR,POD,marker='o',markersize=10,c='#8400C8', zorder=5)
-#  ax.text(SUR + 0.02, POD, 'HFSA',fontsize=10,fontweight='bold',ha='left',va='center',color='#8400C8', zorder=5)
-  ax.text(SUR + 0.03, POD - 0.03, 'HFSA',fontsize=10,fontweight='bold',ha='left',va='top',color='#8400C8', zorder=5)
+  ax.plot(SUR,POD,marker='o',markersize=10,c='#8400C8',zorder=5,markeredgecolor='black',markeredgewidth=1)
+#  ax.text(SUR + 0.02, POD, 'HFSA',fontsize=11,fontweight='bold',ha='left',va='center',color='#8400C8',zorder=5)
+  ax.text(SUR + 0.03, POD - 0.03, 'HFSA',fontsize=11,fontweight='bold',ha='left',va='top',color='#8400C8',zorder=5)
 
-  ax.plot(SUR2,POD2,marker='o',markersize=10,c='#00DC00', zorder=5)
-  ax.text(SUR2 + 0.02, POD2, 'HFSB',fontsize=10,fontweight='bold',ha='left',va='center',color='#00DC00', zorder=5)
+  ax.plot(SUR2,POD2,marker='o',markersize=10,c='#00DC00',zorder=5,markeredgecolor='black',markeredgewidth=1)
+  ax.text(SUR2 + 0.02, POD2, 'HFSB',fontsize=11,fontweight='bold',ha='left',va='center',color='#00DC00',zorder=5)
 
-  ax.plot(SUR3,POD3,marker='o',markersize=10,c='#E63B7F', zorder=5)
-  ax.text(SUR3 + 0.02, POD3, 'HWRF',fontsize=10,fontweight='bold',ha='left',va='center',color='#E63B7F', zorder=5)
+  ax.plot(SUR3,POD3,marker='D',markersize=10,c='#E63B7F',zorder=5,markeredgecolor='black',markeredgewidth=1)
+  ax.text(SUR3 + 0.02, POD3, 'HWRF',fontsize=11,fontweight='bold',ha='left',va='center',color='#E63B7F',zorder=5)
 
-  ax.plot(SUR4,POD4,marker='o',markersize=10,c='#49D9DE', zorder=5)
-#  ax.text(SUR4 + 0.02, POD4, 'HMON',fontsize=10,fontweight='bold',ha='left',va='center',color='#49D9DE', zorder=5)
-  ax.text(SUR4 + 0.03, POD4 + 0.03, 'HMON',fontsize=10,fontweight='bold',ha='left',va='bottom',color='#49D9DE', zorder=5)
+  ax.plot(SUR4,POD4,marker='D',markersize=10,c='#49D9DE',zorder=5,markeredgecolor='black',markeredgewidth=1)
+#  ax.text(SUR4 + 0.02, POD4, 'HMON',fontsize=11,fontweight='bold',ha='left',va='center',color='#49D9DE', zorder=5)
+  ax.text(SUR4 + 0.02, POD4 + 0.02, 'HMON',fontsize=11,fontweight='bold',ha='left',va='bottom',color='#49D9DE',zorder=5)
 
-  ax.plot(SUR5,POD5,marker='o',markersize=10,c='#000000', zorder=5)
-  ax.text(SUR5 + 0.02, POD5, 'GFS',fontsize=10,fontweight='bold',ha='left',va='center',color='#000000', zorder=5)
+  ax.plot(SUR5,POD5,marker='o',markersize=10,c='#000000',zorder=5,markeredgecolor='black',markeredgewidth=1)
+  ax.text(SUR5 + 0.02, POD5, 'GFS',fontsize=11,fontweight='bold',ha='left',va='center',color='#000000', zorder=5)
 
-  ax.plot(SUR6,POD6,marker='o',markersize=10,c='#4287F5', zorder=5)
-  ax.text(SUR6 + 0.02, POD6, 'CTCX',fontsize=10,fontweight='bold',ha='left',va='center',color='#4287F5', zorder=5)
+  ax.plot(SUR6,POD6,marker='o',markersize=10,c='#4287F5',zorder=5,markeredgecolor='black',markeredgewidth=1)
+  ax.text(SUR6 + 0.02, POD6, 'CTCX',fontsize=11,fontweight='bold',ha='left',va='center',color='#4287F5',zorder=5)
 
   # The old legend-style text has also been commented out
   # ax.plot(0.13,0.95,marker='o',markersize=5,c='#8400C8')
@@ -325,15 +325,15 @@ def performance_diag():
   year = os.environ['stormYear']
   tc_name = os.environ['tc_name']
 
-  formal_stat = ''
-  if rirw_label == 'ri'
-      formal_stat = 'Rapid Intensification'
-  elif rirw_label == 'rw'
-      formal_stat = 'Rapid Weakening'
+  rirw_label = ''
+  if rirw_thresh == 'ge30':
+      rirw_label = 'Rapid Intensification'
+  elif rirw_thresh == 'le-30':
+      rirw_label = 'Rapid Weakening'
 
   formal_basin = ''
   if basin == 'al':
-      formal_basin = 'Atlantic'
+      formal_basin = 'North Atlantic'
   elif basin == 'cp':
       formal_basin = 'Central Pacific'
   elif basin == 'ep':
@@ -341,7 +341,7 @@ def performance_diag():
   elif basin == 'wp':
       formal_basin = 'Western Pacific'
 
-  full_title = f'(formal_stat) Performance Diagram\n{formal_basin} {year}'
+  full_title = f'{rirw_label} Performance Diagram\n{formal_basin} {year} Season'
   plt.title(full_title, fontsize=12, fontweight="bold")
 
   #Save, close, and trim whitespace around plot

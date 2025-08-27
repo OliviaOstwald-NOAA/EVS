@@ -307,6 +307,8 @@ if [ "$SENDCOM" = 'YES' ]; then
  cp tc_stat_basin_rirw_${rirw_thresh}_md06.out ${comoutbas}/tc_stat_rirw
 fi  
 
+cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/ptmp/olivia.ostwald/logs/rirw
+
 ### bas do loop end
 done
 done

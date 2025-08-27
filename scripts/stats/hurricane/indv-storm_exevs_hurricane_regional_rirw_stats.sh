@@ -135,8 +135,51 @@ sed -i "s|$SEARCHx|$Model_List|g" TCPairs_template.conf
 run_metplus.py -c $STORMdata/TCPairs_template.conf
 export err=$?; err_chk
 
-#--- run for TC_stat_rirw 
+#--- run for TC_stat 
 cd $STORMdata
+
+cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template.conf .
+
+export SEARCHy="LEAD_template"
+sed -i "s|$SEARCH0|$MetOnMachine|g" TCStat_template.conf
+sed -i "s|$SEARCH1|$STORMdata|g" TCStat_template.conf
+sed -i "s|$SEARCH2|$STORMroot|g" TCStat_template.conf
+sed -i "s|$SEARCH3|$startdate|g" TCStat_template.conf
+sed -i "s|$SEARCH4|$startdate|g" TCStat_template.conf
+sed -i "s|$SEARCHx|$Model_List|g" TCStat_template.conf
+sed -i "s|$SEARCHy|$LEAD_List|g" TCStat_template.conf
+
+export SEARCH7="TC_STAT_INIT_BEG_temp"
+export SEARCH8="TC_STAT_INIT_END_temp"
+export under="_"
+export symdh=${YY01}${MM01}${DD01}${under}${HH01}
+export eymdh=${YY02}${MM02}${DD02}${under}${HH02}
+echo "$symdh, $eymdh"
+
+sed -i "s|$SEARCH7|$symdh|g" TCStat_template.conf
+sed -i "s|$SEARCH8|$eymdh|g" TCStat_template.conf
+
+run_metplus.py -c $STORMdata/TCStat_template.conf
+export err=$?; err_chk
+
+if [ "$SENDCOM" = 'YES' ]; then
+  if [ ! -d ${comoutroot}/tc_pairs ]; then mkdir -p ${comoutroot}/tc_pairs; fi
+  if [ ! -d ${comoutroot}/tc_stat ]; then mkdir -p ${comoutroot}/tc_stat; fi
+  cp -r ${STORMroot}/tc_pairs/* ${comoutroot}/tc_pairs/.
+  cp -r ${STORMroot}/tc_stat/* ${comoutroot}/tc_stat/.
+  if [ ${stormBasin} = "al" ]; then
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutatl}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst 
+  elif [ ${stormBasin} = "ep" ]; then
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutepa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
+  elif [ ${stormBasin} = "wp" ]; then
+    cp ${STORMroot}/tc_stat/tc_stat_summary.tcst ${comoutwpa}/${stormBasin}${stormNumber}${stormYear}_stat_summary.tcst
+  fi
+fi
+
+#fi
+#fi
+
+### RI/RW for individual storms ###
 
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_rirw.conf .
 
@@ -176,9 +219,9 @@ if [ "$SENDCOM" = 'YES' ]; then
   fi
 fi
 
-## two ifs end
 fi
 fi
+
 ### num do loop end
 done
 
@@ -251,10 +294,8 @@ if [ "$SENDCOM" = 'YES' ]; then
   if [ ! -d ${comoutbas}/tc_stat ]; then mkdir -p ${comoutbas}/tc_stat; fi
   cp ${metTCcomout}/tc_stat/tc_stat.out ${comoutbas}/tc_stat/tc_stat_basin.out
   cp ${metTCcomout}/tc_stat/tc_stat_summary.tcst ${comoutbas}/tc_stat/tc_stat_summary_basin.tcst
+  fi
 fi
-fi
-
-### end of commented out lines for test ###
 
 #RIRW conf
 cp ${PARMevs}/metplus_config/${STEP}/${COMPONENT}/TCStat_template_basin_rirw.conf .
@@ -310,6 +351,9 @@ if [ "$SENDCOM" = 'YES' ]; then
  cp tc_stat_basin_rirw_${rirw_thresh}_md05.out ${comoutbas}/tc_stat_rirw
  cp tc_stat_basin_rirw_${rirw_thresh}_md06.out ${comoutbas}/tc_stat_rirw
 fi  
+
+cp -r ${DATAROOT}/${jobid} /lfs/h2/emc/ptmp/olivia.ostwald/logs/rirw
+
 done
 ### bas do loop end
 done
