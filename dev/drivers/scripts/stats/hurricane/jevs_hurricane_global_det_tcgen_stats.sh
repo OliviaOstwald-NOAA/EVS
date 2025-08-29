@@ -10,7 +10,7 @@
 
 set -x
 
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/mnt/lfs5/HFIP/hwrfv3/$USER/EVS
 source ${HOMEevs}/versions/run.ver
 
 evs_ver_2d=$(echo $evs_ver | cut -d'.' -f1-2)
@@ -36,14 +36,14 @@ source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 export PDY=20241231
 
 #Define the directories of your TC genesis data and A/Bdeck files
-export COMINgenesis=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/TCgen
-export COMINadeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-export COMINadeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/adeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINgenesis=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/TCgen
+export COMINadeckNHC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/adeck
+export COMINbdeckNHC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/bdeck
+export COMINadeckJTWC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/adeck
+export COMINbdeckJTWC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/bdeck
 
-export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
+export DATAROOT=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_test/$envir/tmp
+export COMOUT=/mnt/lfs5/HFIP/hwrfv3/$USER/$NET/$evs_ver_2d
 export KEEPDATA=NO
 
 # CALL executable job script here

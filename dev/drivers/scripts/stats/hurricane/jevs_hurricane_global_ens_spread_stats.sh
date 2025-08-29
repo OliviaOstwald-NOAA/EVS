@@ -9,7 +9,7 @@
 
 set -x
 
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/mnt/lfs5/HFIP/hwrfv3/$USER/EVS
 source ${HOMEevs}/versions/run.ver
 
 evs_ver_2d=$(echo $evs_ver | cut -d'.' -f1-2)
@@ -35,13 +35,13 @@ source ${HOMEevs}/dev/modulefiles/${COMPONENT}/${COMPONENT}_${STEP}.sh
 export PDY=20241231
 
 #Define TC-vital file, TC track file and the directory for Bdeck files
-export COMINvit=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/syndat_tcvitals.2024
-export COMINtrack=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/tracks.atcfunix.24
-export COMINbdeckNHC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
-export COMINbdeckJTWC=/lfs/h2/emc/vpppg/noscrub/$USER/evs_tc_2024/bdeck
+export COMINvit=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/syndat_tcvitals.2024
+export COMINtrack=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/tracks.atcfunix.24
+export COMINbdeckNHC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/bdeck
+export COMINbdeckJTWC=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_tc_2024/bdeck
 
-export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
+export DATAROOT=/mnt/lfs5/HFIP/hwrfv3/$USER/evs_test/$envir/tmp
+export COMOUT=/mnt/lfs5/HFIP/hwrfv3/$USER/$NET/$evs_ver_2d
 export KEEPDATA=NO
 
 # CALL executable job script here
